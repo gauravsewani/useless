@@ -1,0 +1,196 @@
+.grid__constainer {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+
+.full {
+  position: fixed;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.3);
+  top: 0;
+  left: 0;
+  height: 0%;
+  width: 100%;
+  z-index: 200;
+  height: 0%;
+  animation: fill 0.5s ease-in-out forwards;
+  padding: 15px;
+  transition: 0.2s all ease-in-out;
+}
+
+@keyframes fill {
+  from {
+    height: 0%;
+    opacity: 0;
+  }
+  to {
+    height: 100vh;
+    opacity: 1;
+  }
+}
+
+.full.remove {
+  height: 100vh;
+  animation: remove 0.5s ease-out forwards;
+}
+
+@keyframes remove {
+  from {
+    height: 100vh;
+    opacity: 1;
+  }
+  to {
+    height: 0%;
+    opacity: 0;
+  }
+}
+
+.grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.grid .grid__item {
+  display: grid;
+  place-items: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.grid .grid__item:hover img:hover {
+  transform: scale(1.03);
+}
+
+.grid .grid__item img {
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.grid .grid__item .index {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+}
+
+.deets__img {
+  width: 100%;
+  opacity: 0;
+  animation: sewwyy 0.5s ease-in-out 0.5s forwards;
+}
+
+@keyframes sewwyy {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.close__btn {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+}
+
+.close__btn .bar {
+  background-color: white;
+  height: 3px;
+  width: 30px;
+  position: absolute;
+}
+
+.close__btn .bar.one {
+  transform: rotate(45deg);
+}
+
+.close__btn .bar.two {
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 700px) {
+  .grid__container {
+    width: calc(100vw - 200px);
+    margin-left: 200px;
+  }
+
+  .full {
+    height: 100%;
+    width: 0%;
+    margin-left: 200px;
+    animation: fill 0.3s ease-in-out forwards;
+    padding: 10px 30px;
+    transition: 0.2s all ease-in-out;
+  }
+
+  .full .deets__img {
+    width: 100%;
+    height: fit-content;
+  }
+
+  @keyframes fill {
+    from {
+      width: 0%;
+      opacity: 0;
+    }
+    to {
+      height: 100vh;
+      width: inherit;
+      opacity: 1;
+    }
+  }
+
+  .full.remove {
+    height: 100vh;
+    width: inherit;
+    animation: remove 0.3s ease-out forwards;
+  }
+
+  @keyframes remove {
+    from {
+      height: 100vh;
+      width: inherit;
+      opacity: 1;
+    }
+    to {
+      height: 0%;
+      width: 0%;
+      opacity: 0;
+    }
+  }
+
+  .close__btn {
+    cursor: pointer;
+  }
+
+  .grid {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    overflow: hidden;
+  }
+
+  .bear__deets {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100% - 60px);
+  }
+
+  .bear__deets .image__container {
+    width: 45%;
+  }
+
+  .bear__deets .info {
+    width: 45%;
+    height: 100%;
+  }
+}

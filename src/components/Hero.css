@@ -1,0 +1,45 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap");
+
+.Hero {
+  background-image: radial-gradient(purple, black);
+  height: 100vh;
+  padding: 50px;
+  font-family: "Raleway", sans-serif;
+}
+
+.Hero .hero__logo {
+  color: white;
+  text-align: center;
+  font-size: 12vw;
+  letter-spacing: 10px;
+  /* font-family: "Bebas Neue", sans-serif; */
+}
+
+.Hero .hero__logo .rotate {
+  /* transform: skewX(180deg); */
+}
+
+.Hero .bottom__nav {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  height: 100px;
+  /* border: 2px dashed white; */
+  display: flex;
+  align-items: center;
+  padding: 0 100px;
+  justify-content: space-between;
+}
+
+.Hero .bottom__nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.Hero .bottom__nav a.transparent {
+  color: transparent;
+}
