@@ -55,7 +55,7 @@ const Nav = () => {
 
     return () => {
       // Cleanup function to reset scroll behavior on unmount
-      document?.body?.style?.overflow = "visible";
+      document.body?.style?.overflow = "visible";
     };
   }, [openNav]);
 
