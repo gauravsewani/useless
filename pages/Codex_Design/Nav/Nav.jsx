@@ -40,24 +40,26 @@ const Nav = () => {
   // }, [openNav]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (openNav) {
-        document.body?.style?.overflow = "hidden";
-      } else {
-        document.body?.style?.overflow = "visible";
-      }
-    };
+    useEffect(() => {
+      const handleScroll = () => {
+        if (openNav) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "visible";
+        }
+      };
 
-    handleScroll(); // Set initial scroll behavior
+      handleScroll(); // Set initial scroll behavior
 
-    // Only update the scroll behavior when `openNav` changes
-    document.body?.style?.overflow = openNav ? "hidden" : "visible";
+      // Only update the scroll behavior when `openNav` changes
+      document.body.style.overflow = openNav ? "hidden" : "visible";
 
-    return () => {
-      // Cleanup function to reset scroll behavior on unmount
-      document.body?.style?.overflow = "visible";
-    };
-  }, [openNav]);
+      return () => {
+        // Cleanup function to reset scroll behavior on unmount
+        document.body.style.overflow = "visible";
+      };
+    }, [openNav]);
+  });
 
   return (
     <div className="nav">
