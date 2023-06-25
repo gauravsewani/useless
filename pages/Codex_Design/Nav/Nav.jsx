@@ -62,7 +62,7 @@ const Nav = () => {
   return (
     <div className="nav">
       <div className="nav__first">
-        <Image src={MedoriiLogo} alt="medorii logo" className={styles.image} />
+        <Image src={MedoriiLogo} alt="medorii logo" className="" />
       </div>
       <div className="burger__container">
         <div className="burger">
