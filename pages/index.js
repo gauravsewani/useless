@@ -64,7 +64,7 @@ function index() {
               : ""
           }`}
         >
-          <div class="absolute bottom-[10vh] right-0 left-0 w-fit h-fit bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 font-razed text-3xl z-50 mx-auto text-yellow-300 flex items-center justify-center p-5 rounded-xl ">
+          <div class="absolute bottom-[10vh] right-0 left-0 w-fit h-fit bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 font-razed text-3xl z-50 mx-auto text-yellow-300 flex items-center justify-center p-5 rounded-xl max-sm:hidden">
             <p className="">Hold Spacebar for 2 seconds</p>
           </div>
 
