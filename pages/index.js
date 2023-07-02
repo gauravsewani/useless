@@ -54,19 +54,16 @@ function index() {
         <Loading />
       ) : (
         <div
-          className={`w-screen h-screen ${
-            clr === "blue"
+          className={`w-screen h-screen ${clr === "blue"
               ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-200 via-blue-400 to-blue-700"
               : clr === "grey"
-              ? "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"
-              : clr === "purple"
-              ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-200 via-purple-400 to-purple-700"
-              : ""
-          }`}
+                ? "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"
+                : clr === "purple"
+                  ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-200 via-purple-400 to-purple-700"
+                  : ""
+            }`}
         >
-          <div class="absolute bottom-[10vh] right-0 left-0 w-fit h-fit bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 font-razed text-3xl z-50 mx-auto text-yellow-300 flex items-center justify-center p-5 rounded-xl max-sm:hidden">
-            <p className="">Hold Spacebar for 2 seconds</p>
-          </div>
+
 
           <Canvas>
             {/* //camera={{ position: [0, 0, 8] }} */}

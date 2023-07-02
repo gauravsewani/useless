@@ -126,10 +126,10 @@ function LandingModel() {
           clr === "blue"
             ? "#ffa500"
             : clr === "grey"
-            ? "#ff69b4"
-            : clr === "purple"
-            ? "#00ffff"
-            : "#000000"
+              ? "#ff69b4"
+              : clr === "purple"
+                ? "#00ffff"
+                : "#000000"
         }
         count={100}
         size={3}
@@ -145,7 +145,7 @@ function LandingModel() {
           penumbra={1}
           castShadow
           intensity={2}
-          // shadowBias={-0.0001}
+        // shadowBias={-0.0001}
         />
         <Logo />
 
@@ -199,24 +199,24 @@ function LandingModel() {
           <Head />
           <SecondPage />
           <ThirdPage />
-          <h1
-            className="text-white absolute top-[390vh]"
+          <div
+            className="text-white absolute top-[290vh]"
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Teams />
-          </h1>
-          <h1
-            className="text-white absolute top-[420vh]"
+          </div>
+          <div
+            className="text-white absolute top-[380vh]"
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Playbox />
-          </h1>
-          <h1
-            className="text-white absolute top-[485vh]"
+          </div>
+          <div
+            className="text-white absolute top-[454vh]"
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Footer2 />
-          </h1>
+          </div>
         </Scroll>
       </ScrollControls>
     </>
