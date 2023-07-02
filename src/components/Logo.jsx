@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.2.3 logo.glb --transform
 
 import { useGLTF, useScroll } from "@react-three/drei";
 import { gsap } from "gsap";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useRef } from "react";
 import { useFrame, useThree } from "react-three-fiber";
 
@@ -13,6 +13,10 @@ export function Model(props) {
   const scroll = useScroll();
   const tl = useRef();
   const meshRef = useRef();
+  const { size } = useThree();
+  const [scale, setScale] = useState(4);
+  const [yPosition, setYPosition] = useState(0);
+  const [xPosition, setXPosition] = useState(0);
 
   useFrame((state, delta) => {
     tl.current.seek(scroll.offset * tl.current.duration());
@@ -21,10 +25,53 @@ export function Model(props) {
   useLayoutEffect(() => {
     tl.current = gsap.timeline({});
     tl.current
-      .set(meshRef.current?.position, { x: 0.2, y: 0, z: -3 }, 0)
-      .set(meshRef.current?.scale, { x: 4, y: 4, z: 4 }, 0)
+      .set(meshRef.current?.position, { x: xPosition, y: yPosition, z: -3 }, 0)
+      .set(meshRef.current?.scale, { x: scale, y: scale, z: scale }, 0)
       .to(meshRef.current?.position, { y: 15 }, "1%");
-  }, []);
+  }, [scale, yPosition]);
+
+  useEffect(() => {
+    function handleResize() {
+      if (size.width < 400) {
+        setScale(1.5);
+        setXPosition(0);
+        setYPosition(3);
+      } else if (size.width < 640) {
+        setScale(2);
+        setXPosition(0.03);
+        setYPosition(2.5);
+      } else if (size.width < 768) {
+        setScale(2.5);
+        setXPosition(0.06);
+        setYPosition(2);
+      } else if (size.width < 1024) {
+        setScale(3);
+        setXPosition(-0.09);
+        setYPosition(1.5);
+      } else if (size.width < 1280) {
+        setScale(3.5);
+        setXPosition(0.12);
+        setYPosition(1);
+      } else if (size.width < 1536) {
+        setScale(4);
+        setXPosition(0.15);
+        setYPosition(0.5);
+      } else {
+        setScale(4.5);
+        setXPosition(0.2);
+        setYPosition(0);
+      }
+    }
+
+    // Call the handleResize function on component mount and window resize
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [size.width]);
 
   const { nodes, materials } = useGLTF("/models/logo/logo-transformed.glb");
   return (
