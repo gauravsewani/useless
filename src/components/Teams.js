@@ -20,8 +20,8 @@ const Teams = () => {
   return (
     <div ref={containerRef} className="container draggable-cards " style={{ backgroundColor: "rgba(0, 0, 0, 0)" }}>
       <h1 style={{ marginTop: "2rem", textAlign: 'center' }}>Our Teams</h1>
-      <div className="mt-4 flex">
-        <div className="card">
+      <div className="mt-4 flex overflow-scroll">
+        <div className="card flex-shrink-0">
           <img src="img/bear/dean.jpeg" alt="Card" />
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
@@ -37,7 +37,7 @@ const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="card ml-4">
+        <div className="card ml-4 flex-shrink-0">
           <img src="img/bear/sam.jpeg" alt="Card" />
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
@@ -53,7 +53,7 @@ const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="card ml-4">
+        <div className="card ml-4 flex-shrink-0">
           <img src="img/bear/naqib.jpeg" alt="Card" />
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
@@ -69,7 +69,7 @@ const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="card ml-4">
+        <div className="card ml-4 flex-shrink-0">
           <img src="img/bear/dinh.jpeg" alt="Card" />
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
@@ -85,7 +85,7 @@ const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="card ml-4">
+        <div className="card ml-4 flex-shrink-0">
           <img src="img/bear/Aqil.jpeg" alt="Card" />
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
@@ -101,7 +101,7 @@ const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="card ml-4">
+        <div className="card ml-4 flex-shrink-0">
           <img src="img/bear/jason.jpeg" alt="Card" />
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
