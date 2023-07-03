@@ -17,7 +17,7 @@ const Playbox = () => {
         <div className="right_in">
           <h3 className="fn__maintitle font-['Archive']">
             Medoria Playbox
-            <p className="medorii__text">⋔⟒⎅⍜⍀⟟⏃ ⌿⌰⏃⊬⏚⍜⌖</p>
+            <p className="fn__maintitle">⋔⟒⎅⍜⍀⟟⏃ ⌿⌰⏃⊬⏚⍜⌖</p>
           </h3>
           <div className="fn_cs_divider">
             <div className="divider">
@@ -48,7 +48,7 @@ const Playbox = () => {
         <a href={"#"} className="self-center">
           <button
             className=" max-md:p-3  max-xl:p-3 xl:p-5
-              max-md:text-xs text-3xl font-archive z-10 xl:w-[20vw] max-md:w-[40vw] md:w-[30vw] test hover:scale-105 ease-in duration-300 text-white"
+              max-md:text-xs text-3xl font-archive z-10 xl:w-[20vw] max-md:w-[40vw] md:w-[30vw] test hover:scale-105 mb-8 ease-in duration-300 text-white"
           >
             artifact<br/>(coming soon!)
           </button>

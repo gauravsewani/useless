@@ -114,7 +114,7 @@ function LandingModel() {
     };
   }, []);
 
-  const texture = useLoader(TextureLoader, "/img/medori.png");
+  const texture = useLoader(TextureLoader, "/img/spacebar.png");
 
   return (
     <>
@@ -126,10 +126,10 @@ function LandingModel() {
           clr === "blue"
             ? "#ffa500"
             : clr === "grey"
-              ? "#ff69b4"
-              : clr === "purple"
-                ? "#00ffff"
-                : "#000000"
+            ? "#ff69b4"
+            : clr === "purple"
+            ? "#00ffff"
+            : "#000000"
         }
         count={100}
         size={3}
@@ -145,7 +145,7 @@ function LandingModel() {
           penumbra={1}
           castShadow
           intensity={2}
-        // shadowBias={-0.0001}
+          // shadowBias={-0.0001}
         />
         <Logo />
 
@@ -194,29 +194,31 @@ function LandingModel() {
           />
         } */}
         <ambientLight intensity={1} />
+        <Plane texture={texture} />
+
         <Scroll></Scroll>
         <Scroll html className="w-screen">
           <Head />
           <SecondPage />
           <ThirdPage />
-          <div
-            className="text-white absolute top-[290vh]"
+          <h1
+            className="text-white absolute top-[390vh]"
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Teams />
-          </div>
-          <div
-            className="text-white absolute top-[380vh]"
+          </h1>
+          <h1
+            className="text-white absolute top-[420vh]"
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Playbox />
-          </div>
-          <div
-            className="text-white absolute top-[454vh]"
+          </h1>
+          <h1
+            className="text-white absolute top-[485vh]"
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Footer2 />
-          </div>
+          </h1>
         </Scroll>
       </ScrollControls>
     </>

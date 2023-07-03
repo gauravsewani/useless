@@ -8,6 +8,7 @@ export default function Plane({ texture }) {
   const { size } = useThree();
   const width = size.width * 0.01;
   const height = size.height * 0.01;
+  // console.log(size.width);
 
   const scroll = useScroll();
   const tl = useRef();
@@ -20,11 +21,12 @@ export default function Plane({ texture }) {
   useLayoutEffect(() => {
     tl.current = gsap.timeline({});
     tl.current
-      .set(meshRef.current?.position, { x: 0.2, y: 2, z: -2 }, 0)
-      .to(meshRef.current?.position, { y: 15 }, "1%");
-  }, []);
+      .set(meshRef.current?.scale, { x: width / 40, y: width / 75, z: 1 }, 0)
+      .set(meshRef.current?.position, { x: 0.2, y: -1.5, z: 2 }, 0)
+      .to(meshRef.current?.position, { x: 150 }, 0.01);
+  }, [size.width]);
 
-  return (
+  return size.width > 1000 ? (
     <mesh ref={meshRef}>
       <planeBufferGeometry attach="geometry" args={[width, height]} />
       <meshBasicMaterial
@@ -34,5 +36,5 @@ export default function Plane({ texture }) {
         // opacity={0.5}
       />
     </mesh>
-  );
+  ) : null;
 }

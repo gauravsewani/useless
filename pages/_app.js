@@ -3,18 +3,18 @@ import { Provider } from "react-redux";
 import store from "../src/redux/store";
 import "../styles/globals.css";
 
-import "@rainbow-me/rainbowkit/styles.css";
-import {
-  getDefaultWallets,
-  RainbowKitProvider,
-  connectorsForWallets,
-  Theme,
-} from "@rainbow-me/rainbowkit";
-import { argentWallet, trustWallet } from "@rainbow-me/rainbowkit/wallets";
-import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum, Chain } from "wagmi/chains";
-import { infuraProvider } from "wagmi/providers/infura";
-import { publicProvider } from "wagmi/providers/public";
+// import "@rainbow-me/rainbowkit/styles.css";
+// import {
+//   getDefaultWallets,
+//   RainbowKitProvider,
+//   connectorsForWallets,
+//   Theme,
+// } from "@rainbow-me/rainbowkit";
+// import { argentWallet, trustWallet } from "@rainbow-me/rainbowkit/wallets";
+// import { configureChains, createClient, WagmiConfig } from "wagmi";
+// import { mainnet, polygon, optimism, arbitrum, Chain } from "wagmi/chains";
+// import { infuraProvider } from "wagmi/providers/infura";
+// import { publicProvider } from "wagmi/providers/public";
 
 // const myCustomTheme = (Theme) = {
 //   blurs: {
@@ -75,21 +75,21 @@ import { publicProvider } from "wagmi/providers/public";
 const demoAppInfo = {
   appName: "Medorii",
 };
-const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum],
-  [publicProvider()]
-);
+// const { chains, provider } = configureChains(
+//   [mainnet, polygon, optimism, arbitrum],
+//   [publicProvider()]
+// );
 
-const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
-  chains,
-});
+// const { connectors } = getDefaultWallets({
+//   appName: "My RainbowKit App",
+//   chains,
+// });
 
-const wagmiClient = createClient({
-  autoConnect: true,
-  connectors,
-  provider,
-});
+// const wagmiClient = createClient({
+//   autoConnect: true,
+//   connectors,
+//   provider,
+// });
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -115,15 +115,15 @@ function MyApp({ Component, pageProps }) {
         />
         <link type="text/css" rel="stylesheet" href="/css/style.css?ver=4.1" />
       </Head>
-      <WagmiConfig client={wagmiClient}>
+      {/* <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
           // theme={myCustomTheme}
           appInfo={demoAppInfo}
-          chains={chains}
-        >
-          <Component {...pageProps} />
-        </RainbowKitProvider>
-      </WagmiConfig>
+        chains={chains} 
+        >*/}
+      <Component {...pageProps} />
+      {/* </RainbowKitProvider>
+      </WagmiConfig> */}
     </Provider>
   );
 }
