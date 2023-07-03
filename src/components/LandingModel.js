@@ -42,61 +42,61 @@ import SecondPage from "./SecondPage";
 import ThirdPage from "./ThirdPage";
 
 function LandingModel() {
-  const { clr, toggleColor } = useAppState();
+  // const { clr, toggleColor } = useAppState();
 
-  // space bar thing
+  // // space bar thing
 
-  const timerRef = useRef(null);
-  const spacebarPressedRef = useRef(false);
+  // const timerRef = useRef(null);
+  // const spacebarPressedRef = useRef(false);
 
-  useEffect(() => {
-    let startTimestamp = 0;
+  // useEffect(() => {
+  //   let startTimestamp = 0;
 
-    const handleKeyDown = (event) => {
-      if (event.code === "Space") {
-        if (!spacebarPressedRef.current) {
-          spacebarPressedRef.current = true;
-          startTimestamp = Date.now();
-          timerRef.current = setInterval(() => {
-            const elapsedTime = Date.now() - startTimestamp;
-            if (elapsedTime >= 2000) {
-              clearInterval(timerRef.current);
-              spacebarPressedRef.current = false;
+  //   const handleKeyDown = (event) => {
+  //     if (event.code === "Space") {
+  //       if (!spacebarPressedRef.current) {
+  //         spacebarPressedRef.current = true;
+  //         startTimestamp = Date.now();
+  //         timerRef.current = setInterval(() => {
+  //           const elapsedTime = Date.now() - startTimestamp;
+  //           if (elapsedTime >= 2000) {
+  //             clearInterval(timerRef.current);
+  //             spacebarPressedRef.current = false;
 
-              // alert("Holding spacebar for 5 seconds!");
-              toggleColor();
-              simulateKeyUpEvent();
-            } else {
-              const seconds = Math.floor(elapsedTime / 1000);
-              console.log(`Holding spacebar for ${seconds} seconds...`);
-            }
-          }, 1000);
-        }
-      }
-    };
+  //             // alert("Holding spacebar for 5 seconds!");
+  //             toggleColor();
+  //             simulateKeyUpEvent();
+  //           } else {
+  //             const seconds = Math.floor(elapsedTime / 1000);
+  //             console.log(`Holding spacebar for ${seconds} seconds...`);
+  //           }
+  //         }, 1000);
+  //       }
+  //     }
+  //   };
 
-    const simulateKeyUpEvent = () => {
-      const event = new KeyboardEvent("keyup", { code: "Space" });
-      document.dispatchEvent(event);
-    };
+  //   const simulateKeyUpEvent = () => {
+  //     const event = new KeyboardEvent("keyup", { code: "Space" });
+  //     document.dispatchEvent(event);
+  //   };
 
-    const handleKeyUp = (event) => {
-      if (event.code === "Space") {
-        if (spacebarPressedRef.current) {
-          spacebarPressedRef.current = false;
-        }
-      }
-    };
+  //   const handleKeyUp = (event) => {
+  //     if (event.code === "Space") {
+  //       if (spacebarPressedRef.current) {
+  //         spacebarPressedRef.current = false;
+  //       }
+  //     }
+  //   };
 
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("keyup", handleKeyUp);
+  //   document.addEventListener("keydown", handleKeyDown);
+  //   document.addEventListener("keyup", handleKeyUp);
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("keyup", handleKeyUp);
-      clearInterval(timerRef.current);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener("keydown", handleKeyDown);
+  //     document.removeEventListener("keyup", handleKeyUp);
+  //     clearInterval(timerRef.current);
+  //   };
+  // }, []);
 
   // prevent the page to scroll on spaebar
 
@@ -121,7 +121,7 @@ function LandingModel() {
       {/* <color attach="backgrou nd" args={["#333333"]} /> */}
       <Environment preset="apartment" />
 
-      <Sparkles
+      {/* <Sparkles
         color={
           clr === "blue"
             ? "#ffa500"
@@ -136,7 +136,7 @@ function LandingModel() {
         scale={10}
         noise={0}
         position={[0, -5, 0]}
-      />
+      /> */}
 
       <ScrollControls pages={5} damping={0.1}>
         <SpotLight
@@ -175,13 +175,15 @@ function LandingModel() {
           opacity={0.05}
           inputColorSpace="display-p3"
         />
-        {clr === "blue" ? (
+        {/* {clr === "blue" ? (
           <Model scale={0.5} position={[0, -11, 0]} />
         ) : clr === "grey" ? (
           <Model scale={0.5} position={[0, -11, 0]} />
         ) : clr === "purple" ? (
           <Model scale={0.5} position={[0, -11, 0]} />
-        ) : null}
+        ) : null} */}
+
+        <Model scale={0.5} position={[0, -11, 0]} />
 
         {/* {
           <Cloud
@@ -194,7 +196,7 @@ function LandingModel() {
           />
         } */}
         <ambientLight intensity={1} />
-        <Plane texture={texture} />
+        {/* <Plane texture={texture} /> */}
 
         <Scroll></Scroll>
         <Scroll html className="w-screen">

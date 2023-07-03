@@ -16,7 +16,7 @@ function index() {
   // Apply the dark mode class on component mount based on the isDarkMode state
   useEffect(() => {
     const handleBeforeUnload = () => {
-      toggleColor();
+      // toggleColor();
       setRendered(false);
     };
 
@@ -54,15 +54,18 @@ function index() {
         <Loading />
       ) : (
         <div
-          className={`w-screen h-screen ${
-            clr === "blue"
-              ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-200 via-blue-400 to-blue-700"
-              : clr === "grey"
-              ? "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"
-              : clr === "purple"
-              ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-200 via-purple-400 to-purple-700"
-              : ""
-          }`}
+          // className={`w-screen h-screen
+          // ${
+          //   clr === "blue"
+          //     ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-200 via-blue-400 to-blue-700"
+          //     : clr === "grey"
+          //     ? "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"
+          //     : clr === "purple"
+          //     ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-200 via-purple-400 to-purple-700"
+          //     : ""
+          // }
+          // `}
+          className="w-screen h-screen bg-[url('/img/galaxy.jpg')] bg-no-repeat bg-cover bg-center"
         >
           <Canvas>
             {/* //camera={{ position: [0, 0, 8] }} */}

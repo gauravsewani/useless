@@ -33,31 +33,31 @@ export function Model(props) {
   useEffect(() => {
     function handleResize() {
       if (size.width < 400) {
-        setScale(1.5);
+        setScale(1);
         setXPosition(0);
         setYPosition(3);
       } else if (size.width < 640) {
-        setScale(2);
+        setScale(1.5);
         setXPosition(0.03);
         setYPosition(2.5);
       } else if (size.width < 768) {
-        setScale(2.5);
+        setScale(2);
         setXPosition(0.06);
         setYPosition(2);
       } else if (size.width < 1024) {
-        setScale(3);
+        setScale(2.5);
         setXPosition(-0.09);
         setYPosition(1.5);
       } else if (size.width < 1280) {
-        setScale(3.5);
+        setScale(3);
         setXPosition(0.12);
         setYPosition(1);
       } else if (size.width < 1536) {
-        setScale(4);
+        setScale(3.5);
         setXPosition(0.15);
         setYPosition(0.5);
       } else {
-        setScale(4.5);
+        setScale(4);
         setXPosition(0.2);
         setYPosition(0);
       }
