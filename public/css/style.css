@@ -1340,7 +1340,7 @@ a.full_link {
 }
 .fn_cs_slider .slider_top .img {
   position: absolute;
-    bottom: 60%;
+  bottom: 60%;
 }
 .fn_cs_slider .slider_top .img:after {
   position: absolute;
@@ -1554,6 +1554,7 @@ a.full_link {
   display: -ms-flex;
   display: -o-flex;
   display: flex;
+  align-items: center;
   width: 100%;
 }
 .fn_cs_about .left_part {
@@ -1594,20 +1595,24 @@ a.full_link {
 }
 .fn_cs_about .right_part {
   width: 43%;
-  padding: 110px 100px;
+  /* padding: 110px 100px; */
 }
 .fn_cs_about .right_in {
   max-width: 500px;
   margin: 0 auto;
 }
 .fn_cs_about .fn__maintitle {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+.fn_cs_about .fn__maintitle .medorii__text {
+  font-size: 25px;
+  margin-top: 20px;
 }
 .fn_cs_about .fn_cs_divider {
   margin-bottom: 25px;
 }
 .desc p {
-  font-size: large;
+  font-size: 17px;
   margin-bottom: 27px;
 }
 .desc p:last-child {

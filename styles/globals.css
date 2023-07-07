@@ -498,6 +498,11 @@ html {
   width: 100%;
   height: 100%;
 }
+
+.draggable-cards .card {
+  width: 400px;
+}
+
 .site-footer.in-view .site-footer__top,
 .site-footer.in-view .site-footer__bottom {
   animation-name: fade-in;
@@ -615,26 +620,32 @@ html {
 
 .Hero .hero__description h1 {
   font-weight: 900;
-  font-size: 60px;
-  max-width: 500px;
+  font-size: 80px;
+  max-width: 700px;
   margin-bottom: 10px;
 }
 
+@media (min-width: 1000px) {
+  .Hero .hero__description h1 {
+    line-height: 80px;
+  }
+}
+
 .Hero .hero__description .season {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 100;
-  margin: 30px 0;
+  margin: 10px 0;
 }
 
 .Hero .hero__description .style {
-  font-size: 20px;
+  font-size: 25px;
   margin-bottom: 30px;
 }
 
 .Hero .hero__description .skins,
 .Hero .hero__description .opensea,
 .Hero .hero__description .playbox {
-  font-size: 15px;
+  font-size: 20px;
 }
 
 @media (max-width: 1000px) {
@@ -747,7 +758,7 @@ html {
 
 .page__two .page__two-main h2 {
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 50px;
   margin-bottom: 30px;
 }
 
@@ -761,7 +772,7 @@ html {
 
 .page__two .page__two-main p.artificial {
   margin-top: -20px;
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .page__three {
@@ -775,22 +786,22 @@ html {
 }
 
 .page__three .page__three-main .bear {
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
 .page__three .page__three-main h2 {
-  font-size: 60px;
+  font-size: 80px;
   font-weight: 900;
-  max-width: 350px;
+  max-width: 500px;
   text-transform: uppercase;
 }
 
 .page__three .page__three-main button {
   background-color: white;
-  height: 35px;
-  width: 120px;
-  font-size: 14px;
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
   font-weight: 500;
   border-radius: 5px;
   color: black;
@@ -951,4 +962,109 @@ html {
   background-position: top left;
 
   background-repeat: no-repeat;
+}
+
+footer {
+  background-color: black;
+}
+
+footer .top__footer,
+footer .bottom__footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 40px;
+  border-top: 4px solid white;
+}
+
+footer .top__footer .join_name {
+  font-size: 10px;
+  font-weight: 100;
+  margin-bottom: 15px;
+}
+
+footer .top__footer h1 {
+  max-width: 300px;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+footer .top__footer .metaverse {
+  font-size: 13px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+footer .top__footer .join_date {
+  font-size: 10px;
+  font-weight: 100;
+}
+
+footer .top__footer .socials_div .social_link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-weight: 100;
+  justify-items: flex-start;
+}
+
+footer .top__footer .socials_div .social_link .socail_text {
+  width: 70px;
+}
+
+footer .bottom__footer .terms {
+  display: flex;
+  gap: 50px;
+}
+
+footer .bottom__footer a {
+  font-size: 13px;
+  color: #cb6ce6;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  footer .top__footer {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  footer .top__footer .join_name {
+    font-size: 10px;
+    font-weight: 100;
+    margin-bottom: 5px;
+  }
+
+  footer .top__footer h1 {
+    max-width: 200px;
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  footer .top__footer .metaverse {
+    font-size: 13px;
+    font-weight: 200;
+    margin-bottom: 10px;
+  }
+
+  footer .top__footer .join_date {
+    font-size: 10px;
+    font-weight: 100;
+    margin-bottom: 20px;
+  }
+
+  footer .top__footer .socials_div {
+    display: flex;
+    gap: 15px;
+  }
+
+  footer .top__footer .socials_div .social_link .socail_text {
+    display: none;
+  }
+
+  footer .bottom__footer .terms {
+    gap: 10px;
+  }
 }
