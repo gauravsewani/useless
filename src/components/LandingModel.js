@@ -204,19 +204,19 @@ function LandingModel() {
           <SecondPage />
           <ThirdPage />
           <h1
-            className="text-white absolute top-[390vh]"
+            className="text-white absolute lg:top-[300vh] top-[280vh]"
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Teams />
           </h1>
           <h1
-            className="text-white absolute top-[420vh]"
+            className="text-white absolute lg:top-[380vh] top-[355vh]"
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Playbox />
           </h1>
           <h1
-            className="text-white absolute top-[485vh]"
+            className="text-white absolute top-[480vh] max-[300px]:top-[470px]  lg:top-[470vh] "
             style={{ width: "inherit", position: "absolute", bottom: "0" }}
           >
             <Footer2 />

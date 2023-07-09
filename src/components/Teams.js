@@ -30,13 +30,13 @@ const Teams = () => {
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
               <h3 className=" ">
-                <Link href="https://www.linkedin.com/in/dean-cheng/">
+                <a href="https://www.linkedin.com/in/dean-cheng/">
                   <img
                     src="svg/social/linkedin-2.svg"
                     alt="linkedin"
                     className=" bg-white h-12 w-12 mx-auto mt-2 hover:bg-blue-500 rounded-2xl p-2 "
                   />
-                </Link>
+                </a>
               </h3>
             </div>
           </div>
@@ -46,13 +46,13 @@ const Teams = () => {
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
               <h3 className=" ">
-                <Link href="https://www.linkedin.com/in/samu3l/">
+                <a href="https://www.linkedin.com/in/samu3l/">
                   <img
                     src="svg/social/linkedin-2.svg"
                     alt="linkedin"
                     className=" bg-white h-12 w-12 mx-auto mt-2 hover:bg-blue-500 rounded-2xl p-2 "
                   />
-                </Link>
+                </a>
               </h3>
             </div>
           </div>
@@ -62,13 +62,13 @@ const Teams = () => {
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
               <h3 className=" ">
-                <Link href="https://www.linkedin.com/in/naqib-solihin-bin-azman-800a85175/">
+                <a href="https://www.linkedin.com/in/naqib-solihin-bin-azman-800a85175/">
                   <img
                     src="svg/social/linkedin-2.svg"
                     alt="linkedin"
                     className=" bg-white h-12 w-12 mx-auto mt-2 hover:bg-blue-500 rounded-2xl p-2 "
                   />
-                </Link>
+                </a>
               </h3>
             </div>
           </div>
@@ -78,13 +78,13 @@ const Teams = () => {
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
               <h3 className=" ">
-                <Link href="https://www.linkedin.com/in/dinh-ho/">
+                <a href="https://www.linkedin.com/in/dinh-ho/">
                   <img
                     src="svg/social/linkedin-2.svg"
                     alt="linkedin"
                     className=" bg-white h-12 w-12 mx-auto mt-2 hover:bg-blue-500 rounded-2xl p-2 "
                   />
-                </Link>
+                </a>
               </h3>
             </div>
           </div>
@@ -94,13 +94,13 @@ const Teams = () => {
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
               <h3 className=" ">
-                <Link href="https://www.linkedin.com/in/muhd-aqil/">
+                <a href="https://www.linkedin.com/in/muhd-aqil/">
                   <img
                     src="svg/social/linkedin-2.svg"
                     alt="linkedin"
                     className=" bg-white h-12 w-12 mx-auto mt-2 hover:bg-blue-500 rounded-2xl p-2 "
                   />
-                </Link>
+                </a>
               </h3>
             </div>
           </div>
@@ -110,13 +110,13 @@ const Teams = () => {
           <div className="card-content bg-[black]">
             <div className="bg-[black]">
               <h3 className=" ">
-                <Link href="https://www.linkedin.com/in/chiajason/">
+                <a href="https://www.linkedin.com/in/chiajason/">
                   <img
                     src="svg/social/linkedin-2.svg"
                     alt="linkedin"
                     className=" bg-white h-12 w-12 mx-auto mt-2 hover:bg-blue-500 rounded-2xl p-2 "
                   />
-                </Link>
+                </a>
               </h3>
             </div>
           </div>

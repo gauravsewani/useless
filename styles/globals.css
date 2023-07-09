@@ -581,6 +581,10 @@ html {
   outline: none;
 }
 
+.play_div {
+  width: fit-content;
+}
+
 .triangle {
   width: 0;
   height: 0;
@@ -968,13 +972,18 @@ footer {
   background-color: black;
 }
 
-footer .top__footer,
+footer .top__footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  border-top: 4px solid white;
+}
+
 footer .bottom__footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
-  padding: 30px 40px;
-  border-top: 4px solid white;
 }
 
 footer .top__footer .join_name {
@@ -985,7 +994,7 @@ footer .top__footer .join_name {
 
 footer .top__footer h1 {
   max-width: 300px;
-  font-size: 50px;
+  font-size: 20px;
   font-weight: 900;
 }
 
@@ -996,7 +1005,7 @@ footer .top__footer .metaverse {
 }
 
 footer .top__footer .join_date {
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 100;
 }
 
@@ -1010,7 +1019,7 @@ footer .top__footer .socials_div .social_link {
 }
 
 footer .top__footer .socials_div .social_link .socail_text {
-  width: 70px;
+  width: fit-content;
 }
 
 footer .bottom__footer .terms {
@@ -1039,7 +1048,7 @@ footer .bottom__footer a {
 
   footer .top__footer h1 {
     max-width: 200px;
-    font-size: 30px;
+    font-size: 10px;
     font-weight: 900;
   }
 
@@ -1050,7 +1059,7 @@ footer .bottom__footer a {
   }
 
   footer .top__footer .join_date {
-    font-size: 10px;
+    font-size: 15px;
     font-weight: 100;
     margin-bottom: 20px;
   }
