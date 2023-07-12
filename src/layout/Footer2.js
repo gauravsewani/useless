@@ -7,6 +7,7 @@ import OpenSea from "../../public/assets/opensea.svg";
 import Medorii from "../../public/assets/medori.png";
 import Instagram from "../../public/assets/instagram.svg";
 import Tele from "../../public/assets/telegram.svg";
+import Youtube from "../../public/assets/youtube.svg";
 
 const Footer2 = () => {
   return (
@@ -25,26 +26,48 @@ const Footer2 = () => {
           <h2 className="join_date">6/9/2040</h2>
         </div>
         <div className="socials_div flex gap-5 text-lg font-razed">
-          <div className="social_link flex flex-col">
-            <div className="socail_text">Discord</div>
-            <Image src={Discord} height={20} width={20} alt="discord" />
-          </div>
-          <div className="social_link flex flex-col">
-            <div className="socail_text">Twitter</div>
-            <Image src={Twitter} width={20} height={20} alt="twitter" />
-          </div>
-          <div className="social_link flex flex-col">
-            <div className="socail_text">Telegram</div>
-            <Image src={Tele} width={20} height={20} alt="Telegram" />
-          </div>
-          <div className="social_link flex flex-col">
-            <div className="socail_text">Instagram</div>
-            <Image src={Instagram} height={20} width={20} alt="instagram" />
-          </div>
-          <div className="social_link flex flex-col">
-            <div className="socail_text">Opensea</div>
-            <Image src={OpenSea} width={20} height={20} alt="opensea" />
-          </div>
+          <a
+            href="https://discord.gg/4wKmVpjfMM"
+            className="text-white no-underline"
+          >
+            <div className="social_link flex flex-col">
+              <div className="socail_text">Discord</div>
+              <Image src={Discord} height={20} width={20} alt="discord" />
+            </div>
+          </a>
+          <a
+            href="https://twitter.com/Medorii_io"
+            className="text-white no-underline"
+          >
+            <div className="social_link flex flex-col">
+              <div className="socail_text">Twitter</div>
+              <Image src={Twitter} width={20} height={20} alt="twitter" />
+            </div>
+          </a>
+          <a href="https://t.me/medorii_io" className="text-white no-underline">
+            <div className="social_link flex flex-col">
+              <div className="socail_text">Telegram</div>
+              <Image src={Tele} width={20} height={20} alt="Telegram" />
+            </div>
+          </a>
+          <a
+            href="https://www.instagram.com/medorii.io/"
+            className="text-white no-underline"
+          >
+            <div className="social_link flex flex-col">
+              <div className="socail_text">Instagram</div>
+              <Image src={Instagram} height={20} width={20} alt="instagram" />
+            </div>
+          </a>
+          <a
+            href="https://youtu.be/Ghww-DCwpyk"
+            className="text-white no-underline"
+          >
+            <div className="social_link flex flex-col">
+              <div className="socail_text">Youtube</div>
+              <Image src={Youtube} width={20} height={20} alt="Youtube" />
+            </div>
+          </a>
         </div>
       </div>
       <div className="bottom__footer gap-5 items-center px-10 py-5">
