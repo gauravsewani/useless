@@ -11,7 +11,9 @@ import {
 } from "@react-three/drei";
 import { Robot } from "../components/Robot";
 // import { Model } from "../components/Ani";
-import { Model } from "../components/Bear2";
+import { Model as Bear2 } from "../components/Bear2";
+import { Model as Bear3 } from "../components/Bear3";
+import { Model as Bear4 } from "../components/Bear4";
 import { Model as Logo } from "../components/Logo";
 import { Model as Line } from "../components/Line";
 
@@ -42,63 +44,63 @@ import SecondPage from "./SecondPage";
 import ThirdPage from "./ThirdPage";
 
 function LandingModel() {
-  // const { clr, toggleColor } = useAppState();
+  const { clr, toggleColor } = useAppState();
 
-  // // space bar thing
+  // space bar thing
 
-  // const timerRef = useRef(null);
-  // const spacebarPressedRef = useRef(false);
+  const timerRef = useRef(null);
+  const spacebarPressedRef = useRef(false);
 
-  // useEffect(() => {
-  //   let startTimestamp = 0;
+  useEffect(() => {
+    let startTimestamp = 0;
 
-  //   const handleKeyDown = (event) => {
-  //     if (event.code === "Space") {
-  //       if (!spacebarPressedRef.current) {
-  //         spacebarPressedRef.current = true;
-  //         startTimestamp = Date.now();
-  //         timerRef.current = setInterval(() => {
-  //           const elapsedTime = Date.now() - startTimestamp;
-  //           if (elapsedTime >= 2000) {
-  //             clearInterval(timerRef.current);
-  //             spacebarPressedRef.current = false;
+    const handleKeyDown = (event) => {
+      if (event.code === "Space") {
+        if (!spacebarPressedRef.current) {
+          spacebarPressedRef.current = true;
+          startTimestamp = Date.now();
+          timerRef.current = setInterval(() => {
+            const elapsedTime = Date.now() - startTimestamp;
+            if (elapsedTime >= 2000) {
+              clearInterval(timerRef.current);
+              spacebarPressedRef.current = false;
 
-  //             // alert("Holding spacebar for 5 seconds!");
-  //             toggleColor();
-  //             simulateKeyUpEvent();
-  //           } else {
-  //             const seconds = Math.floor(elapsedTime / 1000);
-  //             console.log(`Holding spacebar for ${seconds} seconds...`);
-  //           }
-  //         }, 1000);
-  //       }
-  //     }
-  //   };
+              // alert("Holding spacebar for 5 seconds!");
+              toggleColor();
+              simulateKeyUpEvent();
+            } else {
+              const seconds = Math.floor(elapsedTime / 1000);
+              console.log(`Holding spacebar for ${seconds} seconds...`);
+            }
+          }, 1000);
+        }
+      }
+    };
 
-  //   const simulateKeyUpEvent = () => {
-  //     const event = new KeyboardEvent("keyup", { code: "Space" });
-  //     document.dispatchEvent(event);
-  //   };
+    const simulateKeyUpEvent = () => {
+      const event = new KeyboardEvent("keyup", { code: "Space" });
+      document.dispatchEvent(event);
+    };
 
-  //   const handleKeyUp = (event) => {
-  //     if (event.code === "Space") {
-  //       if (spacebarPressedRef.current) {
-  //         spacebarPressedRef.current = false;
-  //       }
-  //     }
-  //   };
+    const handleKeyUp = (event) => {
+      if (event.code === "Space") {
+        if (spacebarPressedRef.current) {
+          spacebarPressedRef.current = false;
+        }
+      }
+    };
 
-  //   document.addEventListener("keydown", handleKeyDown);
-  //   document.addEventListener("keyup", handleKeyUp);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
 
-  //   return () => {
-  //     document.removeEventListener("keydown", handleKeyDown);
-  //     document.removeEventListener("keyup", handleKeyUp);
-  //     clearInterval(timerRef.current);
-  //   };
-  // }, []);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+      clearInterval(timerRef.current);
+    };
+  }, []);
 
-  // prevent the page to scroll on spaebar
+  // prevent the page to scroll on spacebar
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -119,6 +121,7 @@ function LandingModel() {
   return (
     <>
       {/* <color attach="backgrou nd" args={["#333333"]} /> */}
+
       <Environment preset="apartment" />
 
       {/* <Sparkles
@@ -139,6 +142,8 @@ function LandingModel() {
       /> */}
 
       <ScrollControls pages={5} damping={0.1}>
+        <Plane texture={texture} />
+
         <SpotLight
           position={(0, 25, 0)}
           angle={0.526}
@@ -149,7 +154,7 @@ function LandingModel() {
         />
         <Logo />
 
-        <EffectComposer>
+        <EffectComposer autoClear>
           <DepthOfField
             focusDistance={0}
             focalLength={0.02}
@@ -158,8 +163,8 @@ function LandingModel() {
           />
           <Bloom
             luminanceThreshold={0.1}
-            luminanceSmoothing={0.9}
-            height={300}
+            luminanceSmoothing={1.5}
+            height={500}
           />
 
           <Vignette eskil={false} offset={0.1} darkness={1.1} />
@@ -175,15 +180,15 @@ function LandingModel() {
           opacity={0.05}
           inputColorSpace="display-p3"
         />
-        {/* {clr === "blue" ? (
-          <Model scale={0.5} position={[0, -11, 0]} />
+        {clr === "blue" ? (
+          <Bear2 scale={0.5} position={[0, -11, 0]} />
         ) : clr === "grey" ? (
-          <Model scale={0.5} position={[0, -11, 0]} />
+          <Bear3 scale={0.5} position={[0, -11, 0]} />
         ) : clr === "purple" ? (
-          <Model scale={0.5} position={[0, -11, 0]} />
-        ) : null} */}
+          <Bear4 scale={0.5} position={[0, -11, 0]} />
+        ) : null}
 
-        <Model scale={0.5} position={[0, -11, 0]} />
+        {/* <Model scale={0.5} position={[0, -11, 0]} /> */}
 
         {/* {
           <Cloud
@@ -196,7 +201,6 @@ function LandingModel() {
           />
         } */}
         <ambientLight intensity={1} />
-        {/* <Plane texture={texture} /> */}
 
         <Scroll></Scroll>
         <Scroll html className="w-screen">

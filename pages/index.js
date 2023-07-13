@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { Loader, Html } from "@react-three/drei";
 import useAppState from "../src/states/useAppState";
 import Loading from "../src/components/LoadingBar";
+import { FaVolumeMute } from "react-icons/fa";
 
 function index() {
   const { clr, toggleColor } = useAppState();
@@ -13,10 +14,37 @@ function index() {
 
   const [rendered, setRendered] = useState(false);
 
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audio, setAudio] = useState(null);
+
+  useEffect(() => {
+    // Create the Audio instance once when the component mounts
+    setAudio(new Audio("sound.mp3"));
+
+    // Clean up the Audio instance when the component unmounts
+    return () => {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+        setAudio(null);
+      }
+    };
+  }, []);
+
+  const toggleSound = () => {
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play();
+      setIsPlaying(true);
+    }
+  };
+
   // Apply the dark mode class on component mount based on the isDarkMode state
   useEffect(() => {
     const handleBeforeUnload = () => {
-      // toggleColor();
+      toggleColor();
       setRendered(false);
     };
 
@@ -67,6 +95,34 @@ function index() {
           // `}
           className="w-screen h-screen bg-[url('/img/galaxy.jpg')] bg-no-repeat bg-cover bg-center"
         >
+          <div className="absolute pointer-events-none z-20 w-screen h-screen top-0 bottom-0 left-0 right-0 ">
+            <div className="relative">
+              <button
+                onClick={toggleSound}
+                className="absolute pointer-events-auto flex justify-center left-0 right-0 mx-auto w-56 "
+              >
+                {isPlaying ? (
+                  <div className="mt-4">
+                    <div className="loader w-40 h-16 bg-transparent">
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mt-4">
+                    <div className=" max-[500px]:hidden block text-yellow-200 drop-shadow-gold3">
+                      <FaVolumeMute size={60} />
+                    </div>
+                  </div>
+                )}
+              </button>
+            </div>
+          </div>
           <Canvas>
             {/* //camera={{ position: [0, 0, 8] }} */}
             <LandingModel />
