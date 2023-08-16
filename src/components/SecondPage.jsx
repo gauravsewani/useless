@@ -1,12 +1,24 @@
+import AnimatedTextWord from "./AnimatedTextWord";
+
 const SecondPage = () => {
   return (
-    <div className="page__two">
-      <div className="page__two-main">
-        <p className="cryptic">☊⍜⎅⟒⌖ ⚌</p>
-        <h2 className="skin">different skins,</h2>
-        <h2 className="story">different story</h2>
-        <p>Each bear has a different story</p>
-        <p className="artificial">234^783= Artificial Organics</p>
+    <div className="page__two transition-all duration-150">
+      <div className="page__two-main font-montserrat">
+        <p className="cryptic">
+          <AnimatedTextWord text={"☊⍜⎅⟒⌖ ⚌"} />
+        </p>
+        <h2 className="skin font-archive ">
+          <AnimatedTextWord text={"different skins,"} />
+        </h2>
+        <h2 className="story font-archive ">
+          <AnimatedTextWord text={"different story"} />
+        </h2>
+        <p>
+          <AnimatedTextWord text={"Each bear has a different story"} />
+        </p>
+        <p className="artificial">
+          <AnimatedTextWord text={"234^783= Artificial Organics"} />
+        </p>
       </div>
     </div>
   );

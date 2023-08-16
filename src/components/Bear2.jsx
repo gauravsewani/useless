@@ -35,7 +35,7 @@ export function Model(props) {
     });
     tl.current
       .set(group.current?.scale, { x: 1.4, y: 1.4, z: 1.4 })
-      .set(group.current?.position, { x: 0, y: -11.48, z: -6 })
+      .set(group.current?.position, { x: 0, y: -11.48, z: -7.5 })
       .set(group.current?.rotation, { y: 0, x: 0 })
       .to(group.current?.rotation, { y: -0.35 }, 0)
 

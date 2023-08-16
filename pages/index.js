@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import LandingModel from "../src/components/LandingModel";
 import { Canvas } from "react-three-fiber";
 import { Suspense } from "react";
@@ -6,8 +6,12 @@ import { Loader, Html } from "@react-three/drei";
 import useAppState from "../src/states/useAppState";
 import Loading from "../src/components/LoadingBar";
 import { FaVolumeMute } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import Script from "next/script";
 
 function index() {
+  const grainedContainer = useRef();
+
   const { clr, toggleColor } = useAppState();
   const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,6 +20,9 @@ function index() {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [audio, setAudio] = useState(null);
+  const { startTime, elapsedTime, percentage, isScrolled } = useSelector(
+    (state) => state.timer
+  );
 
   useEffect(() => {
     // Create the Audio instance once when the component mounts
@@ -30,16 +37,6 @@ function index() {
       }
     };
   }, []);
-
-  const toggleSound = () => {
-    if (isPlaying) {
-      audio.pause();
-      setIsPlaying(false);
-    } else {
-      audio.play();
-      setIsPlaying(true);
-    }
-  };
 
   // Apply the dark mode class on component mount based on the isDarkMode state
   useEffect(() => {
@@ -60,12 +57,6 @@ function index() {
   //other logic
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
-
-  useEffect(() => {
     setMounted(true);
   });
 
@@ -78,56 +69,28 @@ function index() {
 
   return rendered ? (
     <>
-      {mounted && isLoading ? (
-        <Loading />
-      ) : (
+      <Script
+        src="/grained.js"
+        onLoad={() => {
+          var options = {
+            animate: true,
+            patternWidth: 1000,
+            patternHeight: 1000,
+            grainOpacity: 0.1,
+            grainDensity: 1,
+            grainWidth: 1,
+            grainHeight: 1,
+          };
+
+          grained("#container", options);
+        }}
+      />
+      {mounted && (
         <div
-          // className={`w-screen h-screen
-          // ${
-          //   clr === "blue"
-          //     ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-200 via-blue-400 to-blue-700"
-          //     : clr === "grey"
-          //     ? "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"
-          //     : clr === "purple"
-          //     ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-200 via-purple-400 to-purple-700"
-          //     : ""
-          // }
-          // `}
-          className="w-screen h-screen bg-[url('/img/galaxy.jpg')] bg-no-repeat bg-cover bg-center"
+          className="w-screen h-screen bg-white bg-no-repeat bg-cover bg-center"
+          id="container"
         >
-          <div className="absolute pointer-events-none z-20 w-screen h-screen top-0 bottom-0 left-0 right-0 ">
-            <div className="relative">
-              <button
-                onClick={toggleSound}
-                className="absolute pointer-events-auto flex justify-center left-0 right-0 mx-auto w-56 "
-              >
-                {isPlaying ? (
-                  <div className="mt-4">
-                    <div className="loader w-40 h-16 bg-transparent">
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="mt-4">
-                    <div className=" max-[500px]:hidden block text-yellow-200 drop-shadow-gold3">
-                      <FaVolumeMute size={60} />
-                    </div>
-                  </div>
-                )}
-              </button>
-            </div>
-          </div>
-          <Canvas>
-            {/* //camera={{ position: [0, 0, 8] }} */}
-            <LandingModel />
-            {/* <Loader /> */}
-          </Canvas>
+          <LandingModel />
         </div>
       )}
     </>

@@ -5336,10 +5336,7 @@ a.medorii_fn_videobutton:hover .fn__svg,
   .medorii_fn_wsidebar .sidebar_right {
     padding-left: 25px;
   }
-  .fn__gradient_title,
-  .fn__maintitle.big {
-    font-size: 40px;
-  }
+
   .fn_cs_slider .slider_top li.prev {
     left: -30px;
   }
@@ -5356,7 +5353,7 @@ a.medorii_fn_videobutton:hover .fn__svg,
     width: 80px;
   }
   .fn_cs_about .right_part {
-    padding: 110px 50px;
+    /* padding: 110px 50px; */
     width: 50%;
   }
   .fn_cs_about .left_part {
@@ -5438,6 +5435,7 @@ a.medorii_fn_videobutton:hover .fn__svg,
     width: 100%;
   }
 }
+
 @media (max-width: 1040px) {
   .medorii_fn_blog_single {
     padding-top: 145px;
@@ -5757,6 +5755,7 @@ a.medorii_fn_videobutton:hover .fn__svg,
     margin-left: 0;
     width: 100%;
   }
+
   .medorii_fn_comments .comment-avatar {
     margin-right: 20px;
   }
