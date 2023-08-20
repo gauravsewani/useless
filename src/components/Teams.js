@@ -49,7 +49,7 @@ const Teams = () => {
             <p className="text-sm text-gray-400 px-3 -mt-4">
               TRADER, CO-FOUNDER OF FLYMEDIA
             </p>
-            <div className="card-content absolute bottom-0 left-0 right-0">
+            {/* <div className="card-content absolute bottom-0 left-0 right-0">
               <div className="">
                 <h3 className=" ">
                   <a href="https://www.linkedin.com/in/dean-cheng/">
@@ -61,7 +61,7 @@ const Teams = () => {
                   </a>
                 </h3>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="card ml-4 flex-shrink-0 relative pb-12">
@@ -80,7 +80,7 @@ const Teams = () => {
             <p className="text-sm text-gray-400 px-3 -mt-4">
               TRADER, NFT GROUP HARBRINGER AND METALANDERS MANAGER
             </p>
-            <div className="card-content absolute bottom-0 left-0 right-0">
+            {/* <div className="card-content absolute bottom-0 left-0 right-0">
               <div className="">
                 <h3 className=" ">
                   <a href="https://www.linkedin.com/in/samu3l/">
@@ -92,7 +92,7 @@ const Teams = () => {
                   </a>
                 </h3>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="card ml-4 flex-shrink-0 relative pb-12">
@@ -107,7 +107,7 @@ const Teams = () => {
             <p className="text-sm text-gray-400 px-3 -mt-4">
               DEVELOPER AT STOIC CAPITAL TRADER
             </p>
-            <div className="card-content absolute bottom-0 left-0 right-0">
+            {/* <div className="card-content absolute bottom-0 left-0 right-0">
               <div className="">
                 <h3 className=" ">
                   <a href="https://www.linkedin.com/in/naqib-solihin-bin-azman-800a85175/">
@@ -119,7 +119,7 @@ const Teams = () => {
                   </a>
                 </h3>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="card ml-4 flex-shrink-0 relative pb-12">
@@ -138,7 +138,7 @@ const Teams = () => {
             <p className="text-sm text-gray-400 px-3 -mt-4">
               CO-FOUNDER OF AIZA WORLD, SEA TOKEN ENGINEERING ACADEMY
             </p>
-            <div className="card-content absolute bottom-0 left-0 right-0">
+            {/* <div className="card-content absolute bottom-0 left-0 right-0">
               <div className="">
                 <h3 className=" ">
                   <a href="https://www.linkedin.com/in/dinh-ho/">
@@ -150,7 +150,7 @@ const Teams = () => {
                   </a>
                 </h3>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="card ml-4 flex-shrink-0 relative pb-12">
@@ -169,19 +169,19 @@ const Teams = () => {
             <p className="text-sm text-gray-400 px-3 -mt-4">
               Formerly Creative Director for NIKE
             </p>
-            <div className="card-content absolute bottom-0 left-0 right-0">
+            {/* <div className="card-content absolute bottom-0 left-0 right-0">
               <div className="">
                 <h3 className=" ">
-                  {/* <a href="https://www.linkedin.com/in/dinh-ho/">
+                  <a href="https://www.linkedin.com/in/dinh-ho/">
                     <img
                       src="svg/social/linkedin-2.svg"
                       alt="linkedin"
                       className=" bg-blue-500/50 h-12 w-12 mx-auto mt-2 hover:bg-blue-500 rounded-2xl p-2 "
                     />
-                  </a> */}
+                  </a>
                 </h3>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="card ml-4 flex-shrink-0 relative pb-12">
@@ -200,7 +200,7 @@ const Teams = () => {
             <p className="text-sm text-gray-400 px-3 -mt-4">
               ICO AND PARTNERSHIP EXPERT
             </p>
-            <div className="card-content absolute bottom-0 left-0 right-0">
+            {/* <div className="card-content absolute bottom-0 left-0 right-0">
               <div className="">
                 <h3 className=" ">
                   <a href="https://www.linkedin.com/in/dinh-ho/">
@@ -212,7 +212,7 @@ const Teams = () => {
                   </a>
                 </h3>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
