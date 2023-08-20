@@ -161,24 +161,24 @@ const Teams = () => {
           />
           <div className="flex flex-col">
             <p className="text-2xl text-gray-400 tracking-widest px-3">
-              DESMOND
+              DSNMDH
             </p>
             <p className="text-5xl font-black text-black px-3 -mt-4">
               <span className="block">USER</span>EXPERIENCE
             </p>
             <p className="text-sm text-gray-400 px-3 -mt-4">
-              PREVIOUSLY A CREATIVE LEAD AND DIRECTOR
+              Formerly Creative Director for NIKE
             </p>
             <div className="card-content absolute bottom-0 left-0 right-0">
               <div className="">
                 <h3 className=" ">
-                  <a href="https://www.linkedin.com/in/dinh-ho/">
+                  {/* <a href="https://www.linkedin.com/in/dinh-ho/">
                     <img
                       src="svg/social/linkedin-2.svg"
                       alt="linkedin"
                       className=" bg-blue-500/50 h-12 w-12 mx-auto mt-2 hover:bg-blue-500 rounded-2xl p-2 "
                     />
-                  </a>
+                  </a> */}
                 </h3>
               </div>
             </div>
