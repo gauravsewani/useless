@@ -58,6 +58,7 @@ import { Suspense } from "react";
 import { useState } from "react";
 import { FaVolumeMute } from "react-icons/fa";
 import AnimatedDiv from "./AnimatedDiv";
+import ComingSoon from "./ComingSoon";
 
 function LandingModel() {
   //framer motion animations
@@ -316,6 +317,7 @@ function LandingModel() {
                 <ambientLight intensity={1} />
                 <Scroll></Scroll>
                 <Scroll html className="w-screen">
+                  {/* <ComingSoon /> */}
                   <AnimatedDiv variants={fadeFromLeft}>
                     <Head />
                   </AnimatedDiv>
@@ -335,12 +337,12 @@ function LandingModel() {
                       bottom: "0",
                     }}
                   >
-                    <AnimatedDiv variants={fadeFromTop}>
-                      <Teams />
+                    <AnimatedDiv variants={fadeNormal}>
+                      <Playbox />
                     </AnimatedDiv>
                   </h1>
                   <h1
-                    className="text-black absolute lg:top-[380vh] top-[350vh]"
+                    className="text-black absolute lg:top-[360vh] top-[330vh]"
                     style={{
                       width: "inherit",
                       position: "absolute",
@@ -348,8 +350,8 @@ function LandingModel() {
                     }}
                   >
                     {" "}
-                    <AnimatedDiv variants={fadeNormal}>
-                      <Playbox />
+                    <AnimatedDiv variants={fadeFromTop}>
+                      <Teams />
                     </AnimatedDiv>
                   </h1>
                   <h1

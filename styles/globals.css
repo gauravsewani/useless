@@ -34,6 +34,11 @@ html {
   z-index: 200;
 }
 
+.coming__soon {
+  z-index: 100000;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .full {
   position: fixed;
   backdrop-filter: blur(10px);
@@ -1140,4 +1145,14 @@ footer .bottom__footer a {
 
 .loader .stroke {
   background: black;
+}
+
+@media (max-width: 786px) {
+  .artifact__button {
+    width: 200px;
+  } 
+
+  .artifact__button a {
+    flex-direction: column;
+  }
 }

@@ -15,7 +15,7 @@ const Playbox = () => {
           />
         </div>
       </div>
-      <div className="right_part max-sm:p-0 px-20 py-12">
+      <div className="right_part max-sm:p-0 px-20 py-12 flex flex-col">
         <div className="right_in font-montserrat font-semibold">
           <h3 className="fn__maintitle font-archive">
             Medoria Playbox
@@ -54,16 +54,18 @@ const Playbox = () => {
               <span>Find us On Discord</span>
             </a> */}
         </div>
-        <a href={"#"} className="self-center">
-          <button
-            className=" max-md:p-3  max-xl:p-3 xl:p-5
-              max-md:text-xs text-3xl font-archive z-10 xl:w-[20vw] max-md:w-[40vw] md:w-[30vw] test hover:scale-105 ease-in duration-300 text-black"
+        <button
+          className="test artifact__button max-md:p-3  max-xl:p-3 xl:p-5
+              max-md:text-xs text-2xl font-archive xl:w-[20vw] md:w-[30vw] hover:scale-105 ease-in  duration-300 text-black cursor-pointer self-center"
+        >
+          <a
+            href={"#"}
+            className="text-2xl decoration-transparent text-black flex flex-col"
           >
             artifact
-            <br />
-            (coming soon!)
-          </button>
-        </a>
+            <span className="text-lg">(coming soon!)</span>
+          </a>
+        </button>
       </div>
     </div>
   );

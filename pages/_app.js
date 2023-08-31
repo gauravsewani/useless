@@ -121,7 +121,9 @@ function MyApp({ Component, pageProps }) {
           appInfo={demoAppInfo}
         chains={chains} 
         >*/}
+
       <Component {...pageProps} />
+
       {/* </RainbowKitProvider>
       </WagmiConfig> */}
     </Provider>
