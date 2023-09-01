@@ -1,4 +1,9 @@
+import { useDispatch, useSelector } from "react-redux";
+import { toggleCart } from "../redux/actions/cartActions";
+
 const ShopHero = () => {
+  const dispatch = useDispatch();
+  const cartOpen = useSelector((state) => state.cartOpen);
   return (
     <div className="shop__hero">
       <div className="hero__nav">
@@ -10,8 +15,11 @@ const ShopHero = () => {
           <a href="">My Orders</a>
         </div>
         <span className="divider two">|</span>
-        <div className="cart">
-          <a href="">Cart</a>
+        <div
+          className="cart font-bold cursor-pointer"
+          onClick={() => dispatch(toggleCart())}
+        >
+          Cart
         </div>
       </div>
 

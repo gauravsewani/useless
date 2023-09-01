@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { supabase } from "../../lib/supabaseClient";
+import { useDispatch } from "react-redux";
+import { addToCart, toggleCart } from "../redux/actions/cartActions";
 const ShirtVideo = "https://imgur.com/vEBovSV.mp4";
 const CMPICON = "/img/cmp_icon.svg";
 const ETHICON = "/img/eth_icon.svg";
@@ -27,6 +29,15 @@ const ShopItem = () => {
   const [clickedItem, setClickedItem] = useState(null);
   const [shopItems, setShopItems] = useState([]);
   const videoRef = useRef({});
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
+
+  const handleOverlayClick = () => {
+    dispatch(toggleCart());
+  };
 
   useEffect(() => {
     async function fetchShopItems() {
@@ -50,7 +61,7 @@ const ShopItem = () => {
   };
 
   const ShopItem = shopItems.map((item, index) => {
-    console.log(item);
+    // console.log(item);
     return (
       <div
         className="shop__item"
@@ -60,6 +71,9 @@ const ShopItem = () => {
         onMouseLeave={() => setShowDetails(false)}
       >
         <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
           className={
             showDetails === item.id ? "remaining visible" : "remaining"
           }
@@ -78,7 +92,7 @@ const ShopItem = () => {
         <div className={showDetails === item.id ? "rarity bg" : "rarity"}>
           {item.rarity}
         </div>
-        <div className="item__name">{item.name}</div>
+        <div className="item__name text-black">{item.name}</div>
         {showDetails === item.id ? (
           <div
             className={
@@ -101,10 +115,15 @@ const ShopItem = () => {
         {showDetails === item.id ? (
           <div className="purchase__buttons">
             <button className="buy">Buy Now</button>
-            <button className="cart">Add to Cart</button>
+            <button
+              className="cart text-black"
+              onClick={() => handleAddToCart(item)}
+            >
+              Add to Cart
+            </button>
           </div>
         ) : (
-          <div className="prices">
+          <div className="prices text-black">
             <div className="eth__price">
               <img src={ETHICON} alt="eth icon" />
               {item.price}
@@ -134,8 +153,11 @@ const ShopItem = () => {
               <a href="">My Orders</a>
             </div>
             <span className="divider two">|</span>
-            <div className="cart">
-              <a href="">Cart</a>
+            <div
+              className="cart text-black cursor-pointer"
+              onClick={handleOverlayClick}
+            >
+              Cart
             </div>
             <div className="close__btn" onClick={closeDeets}>
               <div className="bar one"></div>
@@ -154,17 +176,19 @@ const ShopItem = () => {
                 <div className="rarity">{clickedItem.rarity}</div>
                 <div className="type">Digital Only</div>
               </div>
-              <h1 className="item__name">{clickedItem.name}</h1>
+              <h1 className="item__name text-black">{clickedItem.name}</h1>
               <div className="prices">
-                <div className="eth__price">
+                <div className="eth__price text-black">
                   <img src={ETHICON} alt="eth icon" />
                   {clickedItem.price}
                 </div>
-                <div className="cmp__price">
+                <div className="cmp__price text-black">
                   <img src={CMPICON} alt="cmp icon" />
                   {clickedItem.cmp}
                 </div>
-                <div className="price__off">({clickedItem.discount}% off)</div>
+                <div className="price__off text-green-300">
+                  ({clickedItem.discount}% off)
+                </div>
               </div>
               <p>Subject to volatility. Final prices shown in cart.</p>
               <div className="item__color">
@@ -175,7 +199,13 @@ const ShopItem = () => {
               </div>
               <div className="buttons">
                 <button className="buy">Buy Now</button>
-                <button className="cart">Add to Cart</button>
+
+                <button
+                  className="cart text-black outline outline-[1px]"
+                  onClick={() => handleAddToCart(clickedItem)}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           </div>

@@ -1,39 +1,25 @@
+// Loading.js
 import React from "react";
+import GalaxyEffect from "./GalaxyEffect";
 
 const Loading = () => {
   return (
-    <div className="h-screen flex items-center justify-center">
-      <div className="h-screen w-screen z-10">
-        <div className="flex">
-          <img
-            src="/img/medori.png"
-            alt=""
-            className="w-[600px] h-fit mx-auto -mt-20"
-          />
-        </div>
-        <div className="flex flex-col items-center gap-20 -mt-14">
-          <div>
-            <div>
-              <p className="text-6xl text-white font-bold ">Play.</p>
-              <p className="text-6xl text-white font-bold ">Explore.Earn</p>
-            </div>
-            <p className="text-white text-[0.5rem] font-bold -mt-3">
+    <div className="h-screen overflow-hidden relative">
+      <GalaxyEffect>
+        <div className="h-screen flex flex-col items-center  ">
+          <div className="w-[600px] mx-auto -mt-20">
+            <img src="/img/medori.png" alt="" className="w-full h-auto" />
+          </div>
+          <div className="text-center -mt-10 mb-10">
+            <div className="text-6xl text-white font-bold">Play.</div>
+            <div className="text-6xl text-white font-bold">Explore.Earn</div>
+            <p className="text-white text-xs font-bold ml-14">
               HYPER META RUNNING ON PLAY TO OWN
             </p>
           </div>
-
-          <img src="/loading.gif" alt="" className="w-52 h-fit " />
+          <img src="/loading.gif" alt="" className="w-52 h-auto" />
         </div>
-      </div>
-
-      <video
-        autoPlay
-        loop
-        muted
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-      >
-        <source src="/stars.mp4" type="video/mp4" />
-      </video>
+      </GalaxyEffect>
     </div>
   );
 };
