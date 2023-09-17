@@ -1,12 +1,7 @@
-// pages/subscribe/index.js
-
 import { useState } from "react";
-
-// Initialize Supabase client
-import { supabase } from "../../lib/supabaseClient";
+import Snowfall from "react-snowfall";
 import { useEffect } from "react";
 import Head from "next/head";
-import Confetti from "react-confetti";
 
 export default function Subscribe() {
   useEffect(() => {
@@ -18,7 +13,6 @@ export default function Subscribe() {
 
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
-  const [showConfetti, setShowConfetti] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -36,10 +30,8 @@ export default function Subscribe() {
     const data = await res.json();
 
     if (res.status === 200) {
-      setShowConfetti(true);
       setIsSubscribed(true);
       setTimeout(() => {
-        setShowConfetti(false);
         setEmail(""); // Reset the email field
       }, 5000); // Hide confetti after 2 seconds
     } else {
@@ -49,20 +41,28 @@ export default function Subscribe() {
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 relative overflow-hidden">
-        <div className="p-8 bg-white rounded-lg shadow-lg w-1/2 h-1/2 z-10 flex flex-col justify-center items-center">
+      <Head>
+        <title>Subscribe to Our Newsletter!</title>
+        <meta
+          name="description"
+          content="Get the latest updates and offers directly to your inbox."
+        />
+      </Head>
+      <div className="flex items-start justify-center h-screen relative overflow-hidden bg-[url('/img/background.png')] bg-cover bg-center">
+        {isSubscribed && <Snowfall />}
+        <div className="p-8 bg-white mt-32 rounded-lg shadow-lg w-2/5 h-1/3 z-10 flex flex-col justify-center items-baseline ">
           {isSubscribed ? (
             <div className="text-center flex w-full h-full items-center justify-center">
-              <h1 className="text-6xl font-semibold mb-4 text-gray-900">
+              <h1 className="text-2xl font-semibold mb-4 text-gray-900">
                 Thank You for Subscribing!
               </h1>
             </div>
           ) : (
             <>
-              <h1 className="text-6xl font-semibold font-archive mb-4 text-center text-gray-900">
+              <h1 className="text-2xl font-semibold font-archive mb-4 text-center text-gray-900">
                 Subscribe to Our Newsletter!
               </h1>
-              <p className="text-center text-2xl text-gray-700 mb-4">
+              <p className="text-center text-xl text-gray-700 mb-4">
                 Get the latest updates and offers directly to your inbox.
               </p>
               <form onSubmit={handleSubmit} className="w-full">
@@ -91,8 +91,6 @@ export default function Subscribe() {
             </>
           )}
         </div>
-
-        {showConfetti && <Confetti className="w-screen h-screen" />}
       </div>
     </>
   );

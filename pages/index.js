@@ -8,6 +8,7 @@ import Loading from "../src/components/LoadingBar";
 import { FaVolumeMute } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Script from "next/script";
+import Head from "next/head";
 
 function index() {
   const grainedContainer = useRef();
@@ -69,6 +70,13 @@ function index() {
 
   return rendered ? (
     <>
+      <Head>
+        <title>Medorii.io</title>
+        <meta
+          name="description"
+          content="Explore the cosmic frontier with Space Bear NFTs—your gateway to a universe of sustainably-powered digital art. Our unique NFT collection is not just a feast for the eyes; it's a step towards a greener future, powered by solar energy. Own a Space Bear today and be part of the solar revolution in the NFT space."
+        />
+      </Head>
       <Script
         src="/grained.js"
         onLoad={() => {
