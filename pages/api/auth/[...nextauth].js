@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { supabase } from "../../../lib/supabaseClient";
 
 export default NextAuth({
+  secret: process.env.SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
