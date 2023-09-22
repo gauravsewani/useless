@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import store from "../src/redux/store";
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
+import Cart from "../src/components/Cart";
 
 // import "@rainbow-me/rainbowkit/styles.css";
 // import {
@@ -127,6 +128,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           appInfo={demoAppInfo}
         chains={chains} 
         >*/}
+        <Cart />
         <Component {...pageProps} />
         {/* </RainbowKitProvider>
       </WagmiConfig> */}

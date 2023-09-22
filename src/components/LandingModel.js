@@ -199,9 +199,9 @@ function LandingModel() {
             {isScrolled == false && (
               <div className="max-[600px]:hidden  flex w-[80vw] h-[98vh] items-end justify-center  mx-auto">
                 <div className="flex gap-3  items-center justify-center relative">
-                  <p className="mt-1 text-white drop-shadow-yellow">Press</p>
+                  <p className="mt-1 text-white drop-shadow-yellow">press</p>
                   <p className="absolute right-0 left-0 top-0 bottom-0  mt-2.5 mr-7 text-black text-xl">
-                    Spacebar
+                    spacebar
                   </p>
                   <div className="w-40 h-10 overflow-hidden rounded-full bg-white outline-4 outline outline-black">
                     <div
@@ -213,7 +213,7 @@ function LandingModel() {
                       style={{ width: `calc(${percentage} * 1%)` }}
                     ></div>
                   </div>
-                  <p className="mt-1 text-white drop-shadow-yellow">To Warp</p>
+                  <p className="mt-1 text-white drop-shadow-yellow">to warp</p>
                 </div>
               </div>
             )}
