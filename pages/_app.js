@@ -1,9 +1,11 @@
 import Head from "next/head";
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
+import "react-toastify/dist/ReactToastify.css";
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import Cart from "../src/components/Cart";
+import { ToastContainer } from "react-toastify";
 
 // import "@rainbow-me/rainbowkit/styles.css";
 // import {
@@ -130,6 +132,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         >*/}
         <Cart />
         <Component {...pageProps} />
+        <ToastContainer style={{ zIndex: 50 }} />
+
         {/* </RainbowKitProvider>
       </WagmiConfig> */}
       </Provider>

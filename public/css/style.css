@@ -350,6 +350,8 @@ body:before {
   left: 23.9%; /* 479px */
   background-color: var(--mc1);
   border-radius: 100%;
+  pointer-events: none;
+
   -webkit-filter: blur(150px);
   -o-filter: blur(150px);
   filter: blur(150px);

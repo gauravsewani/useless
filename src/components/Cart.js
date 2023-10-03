@@ -1,9 +1,61 @@
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const cartOpen = useSelector((state) => state.cart.cartOpen);
+  const [customerId, setCustomerId] = useState(null);
+
+  useEffect(() => {
+    // Check if customerId exists in Local Storage
+    const storedCustomerId = localStorage.getItem("customerId");
+    if (!storedCustomerId) {
+      // If customerId doesn't exist, make a request to create a new customer
+      fetch("/api/create_customer", {
+        method: "POST",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Store the new customerId in Local Storage and state
+          localStorage.setItem("customerId", data.customerId);
+          setCustomerId(data.customerId);
+        });
+    } else {
+      setCustomerId(storedCustomerId);
+    }
+  }, []);
+
+  const handleCheckout = async () => {
+    const customerId = localStorage.getItem("customerId");
+
+    try {
+      const response = await fetch("/api/checkout_session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ customerId: customerId, items: cartItems }),
+      });
+      const { sessionId } = await response.json();
+
+      // Load Stripe using your public key
+      const stripe = await loadStripe(process.env.STRIPE_PUBLIC);
+
+      if (!stripe) {
+        throw new Error("Stripe failed to initialize");
+      }
+
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+
+      if (error) {
+        console.error(error);
+      }
+    } catch (error) {
+      console.error("Error redirecting to Stripe Checkout:", error);
+    }
+  };
 
   const handleToggleCart = () => {
     dispatch({ type: "TOGGLE_CART" });
@@ -56,13 +108,22 @@ export default function Cart() {
             >
               {cartItems.map((item) => (
                 <li key={item.id} className="flex mb-4 border-b pb-4">
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    className="w-1/3 h-24 rounded mr-4"
-                    src={item.video}
-                  ></video>
+                  {item.video ? (
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      className="w-1/3 h-24 rounded mr-4"
+                      src={item.video}
+                    ></video>
+                  ) : (
+                    <img
+                      src={item.image || "https://via.placeholder.com/150"}
+                      alt={item.name || "Product Image"}
+                      className="w-1/3 h-24 rounded mr-4"
+                    />
+                  )}
+
                   <div className="flex flex-col justify-between">
                     <h3 className="text-xl text-black">{item.name}</h3>
                     <p>Price: ${item.price * item.quantity}</p>
@@ -89,6 +150,12 @@ export default function Cart() {
               <h2 className="text-2xl text-black">
                 Grand Total: ${grandTotal.toFixed(2)}
               </h2>
+              <button
+                onClick={handleCheckout}
+                className="mt-4 w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 transition-colors duration-300"
+              >
+                Checkout with Stripe
+              </button>
             </div>
           </>
         )}

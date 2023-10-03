@@ -1,36 +1,33 @@
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
 
 export default function Account() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
-  const [hasMounted, setHasMounted] = useState(false);
 
-  useEffect(() => {
-    setHasMounted(true);
-
-    setTimeout(() => {
-      if (!session) {
-        router.push("/login");
-      }
-    }, 1000); // 1 second delay
-  }, [session, router]);
-
-  if (!hasMounted) {
+  // If the session status is "loading", show a loading message
+  if (status === "loading") {
     return <div>Loading...</div>;
   }
 
-  if (!session) {
-    return null; // This will be replaced by the redirect after 1 second
+  // If the session status is "unauthenticated", redirect to login
+  if (status === "unauthenticated") {
+    router.push("/login");
+    return null;
   }
 
   return (
-    <div>
-      <h1>Welcome to your account, {session.user.name}!</h1>
-
-      <button onClick={() => signOut()}>Sign Out</button>
+    <div className="text-white flex flex-col h-screen items-center justify-center">
+      <h1 className="text-4xl font-bold mb-10">
+        Welcome to your account, {session.user.name}!
+      </h1>
+      <button
+        className="border p-2 rounded-lg bg-white text-black"
+        onClick={() => signOut()}
+      >
+        Sign Out
+      </button>
     </div>
   );
 }

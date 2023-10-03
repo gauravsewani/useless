@@ -1,19 +1,43 @@
 import { useDispatch } from "react-redux";
-import { supabase } from "../../lib/supabaseClient";
 import { useEffect } from "react";
 import Link from "next/link";
+import Stripe from "stripe";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET);
 
 export async function getServerSideProps({ params }) {
-  const { data: product } = await supabase
-    .from("shop")
-    .select("*")
-    .eq("id", params.id)
-    .single();
-  return {
-    props: {
-      product,
-    },
-  };
+  try {
+    const product = await stripe.products.retrieve(params.id);
+    const pricesList = await stripe.prices.list({ product: params.id });
+    const priceObj = pricesList.data[0]; // Assuming one price per product
+
+    const structuredProduct = {
+      id: product.id,
+      name: product.name,
+      video: product.metadata.video || "",
+      cmp: product.metadata.cmp || "",
+      colorName: product.metadata.colorName || "",
+      colorNumber: product.metadata.colorNumber || "",
+      rarity: product.metadata.rarity || "",
+      remaining: product.metadata.remaining || "",
+      totalNumber: product.metadata.totalNumber || "",
+      discount: product.metadata.discount || "",
+      price: product.metadata.price / 100, // Convert cents to dollars
+      image: product.images[0] || "",
+      priceId: priceObj.id, // Add the priceId here
+    };
+
+    return {
+      props: {
+        product: structuredProduct,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching product from Stripe:", error);
+    return {
+      notFound: true,
+    };
+  }
 }
 
 export default function ProductDetail({ product }) {
@@ -63,21 +87,30 @@ export default function ProductDetail({ product }) {
       </button>
 
       <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4">
-        <video
-          autoPlay
-          muted
-          loop
-          className="w-fit h-[90vh] rounded"
-          src={product.video}
-        ></video>
+        {product.video ? (
+          <video
+            autoPlay
+            muted
+            loop
+            className="w-fit h-[90vh] rounded"
+            src={product.video}
+          ></video>
+        ) : (
+          <img
+            src={product.image || "https://via.placeholder.com/150"}
+            alt={product.name}
+            className="w-fit h-[90vh] rounded"
+          />
+        )}
       </div>
+
       <div className="w-full md:w-1/2 p-4">
-        <h2 className="text-3xl font-bold">{product.name}</h2>
+        <h2 className="text-3xl font-bold text-black">{product.name}</h2>
         <p className="mt-2 text-lg">Price: ${product.price}</p>
-        <p>Color: {product.colorname}</p>
+        <p>Color: {product.colorName}</p>
         <p>Rarity: {product.rarity}</p>
         <p>
-          Remaining: {product.remaining} / {product.totalnumber}
+          Remaining: {product.remaining} / {product.totalNumber}
         </p>
         {product.discount && (
           <p className="text-red-500">Discount: {product.discount}%</p>

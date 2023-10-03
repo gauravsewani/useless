@@ -4,7 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { supabase } from "../../../lib/supabaseClient";
 
 export default NextAuth({
-  secret: process.env.SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -15,45 +14,33 @@ export default NextAuth({
       credentials: {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
+        name: { label: "Name", type: "text", placeholder: "John Smith" },
+        action: { label: "Action", type: "hidden" }, // action: "signup" or "signin"
       },
       async authorize(credentials) {
-        // Check if the user exists in Supabase
-        const { data: user, error } = await supabase
-          .from("users")
-          .select("*")
-          .eq("email", credentials.email)
-          .single();
-
-        if (error && !user) {
-          // If user not found, create a new entry in Supabase
-          const { data, error } = await supabase
-            .from("users")
-            .insert([{ email: credentials.email, name: credentials.name }]);
-          if (error) return null;
-          return { email: data.email, name: data.name };
+        const { action } = credentials;
+        try {
+          if (action === "signup") {
+            return await handleSignup(credentials);
+          } else {
+            return await handleSignin(credentials);
+          }
+        } catch (error) {
+          console.error(error.message);
+          return null;
         }
-
-        if (user) return { email: user.email, name: user.name };
-        return null;
       },
     }),
   ],
-  pages: {
-    signIn: "/account",
-    signOut: "/login",
-    error: "/login",
-    verifyRequest: "/login",
-    newUser: null,
-  },
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account, profile }) {
       if (account.provider === "google") {
-        const { id, name, email, image } = user;
+        const { email, name, image } = user;
 
-        // Check if the user already exists in the Supabase table
-        const { data, error: fetchError } = await supabase
+        // Check if user already exists
+        const { data: existingUser, error: fetchError } = await supabase
           .from("users")
-          .select("id")
+          .select("email")
           .eq("email", email)
           .maybeSingle();
 
@@ -62,12 +49,12 @@ export default NextAuth({
           return false;
         }
 
-        // If the user doesn't exist, insert them into the table
-        if (!data) {
+        // If user doesn't exist, insert them
+        if (!existingUser) {
           const { error: insertError } = await supabase.from("users").insert([
             {
-              name,
-              email,
+              name: name,
+              email: email,
               image_url: image,
               is_google_user: true,
             },
@@ -82,10 +69,34 @@ export default NextAuth({
           }
         }
       }
-
-      // Handle logic for other providers or credentials-based login if needed
-
       return true;
     },
   },
+
+  pages: {
+    signIn: "/login",
+  },
+  secret: process.env.SECRET,
 });
+
+async function handleSignup(credentials) {
+  const { email, password, name } = credentials;
+  const { data, error } = await supabase
+    .from("users")
+    .insert([{ email, name, password }]);
+  if (error) throw new Error(error.message);
+  return { email, name }; // return the user object
+}
+
+async function handleSignin(credentials) {
+  const { email, password } = credentials;
+  const { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("email", email)
+    .single();
+  if (error) throw new Error(error.message);
+  if (!data) throw new Error("User not found");
+  if (data.password !== password) throw new Error("Invalid password");
+  return data; // return the user object
+}
