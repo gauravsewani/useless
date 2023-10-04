@@ -988,7 +988,7 @@ footer {
 
 footer .top__footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
 
   border-top: 4px solid white;
@@ -996,7 +996,7 @@ footer .top__footer {
 
 footer .bottom__footer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 }
 

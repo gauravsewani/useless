@@ -92,11 +92,14 @@ const LoginSignup = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg text-black w-full max-w-md">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-amber-50">
+      <div className="bg-white p-8 sm:rounded-2xl max-sm:h-screen outline outline-2 shadow-lg text-black w-full sm:max-w-md">
+        <div className="w-36 h-36 rounded-full bg-slate-300 mx-auto ">
+          <img src="/img/logo4.png" alt="" className="p-2" />
+        </div>
         <form onSubmit={handleSubmit}>
           {!isLogin && (
-            <div className="mb-4">
+            <div className="mb-4 ">
               <label
                 className="block text-black  text-sm font-medium mb-2"
                 htmlFor="name"
@@ -165,7 +168,7 @@ const LoginSignup = () => {
                 className="text-gray-700 text-xs cursor-pointer select-none"
                 htmlFor="agreed"
               >
-                I agree to the{" "}
+                You agree with the{" "}
                 <a
                   target="_blank"
                   className="text-purple-700 uppercase font-bold"
@@ -179,7 +182,7 @@ const LoginSignup = () => {
 
           <div className="flex items-center justify-between">
             <button
-              className={`bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200 ${
+              className={`bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200 mx-auto ${
                 !isLogin &&
                 (!agreed || nameError || emailError || passwordError)
                   ? "opacity-50 cursor-not-allowed"
@@ -193,21 +196,43 @@ const LoginSignup = () => {
             >
               {isLogin ? "Sign In" : "Sign Up"}
             </button>
-            <button
-              type="button"
-              className="text-blue-500 hover:text-blue-600 font-medium text-sm"
-              onClick={() => setIsLogin(!isLogin)}
-            >
-              {isLogin ? "Switch to Sign Up" : "Switch to Sign In"}
-            </button>
           </div>
         </form>
+        <div class="border-t-2 border-solid mx-12 my-5 border-gray-500"></div>
+
         <div className="flex items-center justify-center mt-4">
           <button
-            className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+            className=" bg-gray-100 outline text-black font-bold py-2 px-12 rounded-md transition duration-200 flex items-center gap-4"
             onClick={handleGoogleLogin}
           >
-            Sign In with Google
+            <img src="/img/google.png" alt="" className="h-6" />
+            <span className="max-sm:hidden">Sign In with Google</span>
+          </button>
+        </div>
+        <div className="flex items-center justify-center mt-4">
+          {isLogin ? (
+            <p className="text-black text-sm pointer-events-none">
+              Don't have an account?
+            </p>
+          ) : (
+            <p className="text-black text-sm pointer-events-none">
+              Already have an account?
+            </p>
+          )}
+          <button
+            type="button"
+            className="text-blue-500 hover:text-blue-600 font-medium text-sm max-sm:text-xs"
+            onClick={() => setIsLogin(!isLogin)}
+          >
+            {isLogin ? (
+              <span className="pointer-events-auto text-purple-400 ml-1 font-bold">
+                Sign Up Here
+              </span>
+            ) : (
+              <span className="pointer-events-auto text-purple-400 ml-1 font-bold">
+                Login Here
+              </span>
+            )}
           </button>
         </div>
       </div>

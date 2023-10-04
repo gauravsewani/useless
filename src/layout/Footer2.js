@@ -31,8 +31,7 @@ const Footer2 = () => {
             className="text-white no-underline"
           >
             <div className="social_link flex flex-col">
-              <div className="socail_text">Discord</div>
-              <Image src={Discord} height={20} width={20} alt="discord" />
+              <Image src={Discord} width={35} height={35} alt="discord" />
             </div>
           </a>
           <a
@@ -40,14 +39,12 @@ const Footer2 = () => {
             className="text-white no-underline"
           >
             <div className="social_link flex flex-col">
-              <div className="socail_text">Twitter</div>
-              <Image src={Twitter} width={20} height={20} alt="twitter" />
+              <Image src={Twitter} width={35} height={35} alt="twitter" />
             </div>
           </a>
           <a href="https://t.me/medorii_io" className="text-white no-underline">
             <div className="social_link flex flex-col">
-              <div className="socail_text">Telegram</div>
-              <Image src={Tele} width={20} height={20} alt="Telegram" />
+              <Image src={Tele} width={35} height={35} alt="Telegram" />
             </div>
           </a>
           <a
@@ -55,8 +52,7 @@ const Footer2 = () => {
             className="text-white no-underline"
           >
             <div className="social_link flex flex-col">
-              <div className="socail_text">Instagram</div>
-              <Image src={Instagram} height={20} width={20} alt="instagram" />
+              <Image src={Instagram} width={35} height={35} alt="instagram" />
             </div>
           </a>
           <a
@@ -64,15 +60,14 @@ const Footer2 = () => {
             className="text-white no-underline"
           >
             <div className="social_link flex flex-col">
-              <div className="socail_text">Youtube</div>
-              <Image src={Youtube} width={20} height={20} alt="Youtube" />
+              <Image src={Youtube} width={35} height={35} alt="Youtube" />
             </div>
           </a>
         </div>
       </div>
       <div className="bottom__footer gap-5 items-center px-10 py-5">
         <div className="logo">
-          <Image src={Medorii} width={80} height={20} />
+          <Image src={Medorii} width={120} height={20} />
         </div>
 
         <div className="max-[600px]:flex max-[600px]:gap-5 flex w-60 justify-between  ">
