@@ -12,7 +12,7 @@ import Youtube from "../../public/assets/youtube.svg";
 const Footer2 = () => {
   return (
     <footer>
-      <div className="top__footer gap-10 max-[600px]:pb-0 px-10 pt-4">
+      <div className="top__footer gap-10 max-sm:gap-2 max-[600px]:pb-0 px-10 pt-4">
         <div className="play_div max-h-20 min-w-[25vw] max-[600px]:hidden">
           <h2 className=" text-sm text-yellow-300 ">MEDORII.IO</h2>
           <h1 className=""> PLAY, OWN TRADE.</h1>
@@ -79,6 +79,7 @@ const Footer2 = () => {
           </a>
         </div>
       </div>
+      {/* <div className="bg-black h-screen"></div> */}
     </footer>
   );
 };

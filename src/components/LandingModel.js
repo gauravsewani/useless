@@ -58,6 +58,7 @@ import { Suspense } from "react";
 import { useState } from "react";
 import { FaVolumeMute } from "react-icons/fa";
 import AnimatedDiv from "./AnimatedDiv";
+import { useInView } from "react-intersection-observer";
 
 function LandingModel() {
   //framer motion animations
@@ -89,6 +90,35 @@ function LandingModel() {
 
   const timerRef = useRef(null);
   const spacebarPressedRef = useRef(false);
+  const [isInView1, setIsInView1] = useState(false);
+  const [isInView2, setIsInView2] = useState(false);
+
+  const { ref: ref1, inView: inView1 } = useInView();
+  const { ref: ref2, inView: inView2 } = useInView();
+
+  useEffect(() => {
+    if (inView1 && !isInView1) {
+      setIsInView1(true);
+    }
+  }, [inView1, isInView1]);
+
+  useEffect(() => {
+    if (inView2 && !isInView2) {
+      setIsInView2(true);
+    }
+  }, [inView2, isInView2]);
+
+  useEffect(() => {
+    if (!inView1 && isInView1) {
+      setIsInView1(false);
+    }
+  }, [inView1, isInView1]);
+
+  useEffect(() => {
+    if (!inView2 && isInView2) {
+      setIsInView2(false);
+    }
+  }, [inView2, isInView2]);
 
   useEffect(() => {
     // Create the Audio instance once when the component mounts
@@ -195,29 +225,33 @@ function LandingModel() {
     <>
       {!isLoading ? (
         <>
-          <div className="bg-transparent text-3xl text-yellow-400 text-center font-black absolute w-screen h-screen overflow-hidden z-50 flex items-center pointer-events-none ">
-            {isScrolled == false && (
-              <div className="max-[600px]:hidden  flex w-[80vw] h-[98vh] items-end justify-center  mx-auto">
-                <div className="flex gap-3  items-center justify-center relative">
-                  <p className="mt-1 text-white drop-shadow-yellow">press</p>
-                  <p className="absolute right-0 left-0 top-0 bottom-0  mt-2.5 mr-7 text-black text-xl">
-                    spacebar
-                  </p>
-                  <div className="w-40 h-10 overflow-hidden rounded-full bg-white outline-4 outline outline-black">
-                    <div
-                      className={`h-full w-full transition-all duration-75 rounded-full bg-yellow-300 ${
-                        percentage == 0
-                          ? "outline-none"
-                          : "outline-2 outline outline-black"
-                      }  `}
-                      style={{ width: `calc(${percentage} * 1%)` }}
-                    ></div>
+          {!isInView1 && !inView2 && (
+            <div className="bg-transparent text-3xl text-yellow-400 text-center font-black absolute w-screen h-screen overflow-hidden z-50 flex items-center pointer-events-none ">
+              {isScrolled == false && (
+                <div className="max-[600px]:hidden  flex w-[80vw] h-[98vh] items-end justify-center  mx-auto">
+                  <div className="flex gap-3  items-center justify-center relative">
+                    <p className="mt-1 text-white drop-shadow-yellow">press</p>
+                    <p className="absolute right-0 left-0 top-0 bottom-0  mt-2.5 mr-7 text-black text-xl">
+                      spacebar
+                    </p>
+                    <div className="w-40 h-10 overflow-hidden rounded-full bg-white outline-4 outline outline-black">
+                      <div
+                        className={`h-full w-full transition-all duration-75 rounded-full bg-yellow-300 ${
+                          percentage == 0
+                            ? "outline-none"
+                            : "outline-2 outline outline-black"
+                        }  `}
+                        style={{ width: `calc(${percentage} * 1%)` }}
+                      ></div>
+                    </div>
+                    <p className="mt-1 text-white drop-shadow-yellow">
+                      to warp
+                    </p>
                   </div>
-                  <p className="mt-1 text-white drop-shadow-yellow">to warp</p>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
           <div className="absolute pointer-events-none z-20 w-screen h-screen top-0 bottom-0 left-0  ">
             <div className="relative max-md:hidden">
               <button
@@ -315,7 +349,7 @@ function LandingModel() {
             } */}
                 <ambientLight intensity={1} />
                 <Scroll></Scroll>
-                <Scroll html className="w-screen">
+                <Scroll html className="w-screen h-fit">
                   <AnimatedDiv variants={fadeFromLeft}>
                     <Head />
                   </AnimatedDiv>
@@ -346,22 +380,21 @@ function LandingModel() {
                       position: "absolute",
                       bottom: "0",
                     }}
+                    ref={ref1}
                   >
                     {" "}
                     <AnimatedDiv variants={fadeNormal}>
                       <Playbox />
                     </AnimatedDiv>
                   </h1>
-                  <h1
-                    className="text-white absolute top-[480vh] max-[300px]:top-[470px]  lg:top-[470vh] "
-                    style={{
-                      width: "inherit",
-                      position: "absolute",
-                      bottom: "0",
-                    }}
+                  <div
+                    className="absolute -bottom-[67%]  max-sm:-bottom-[110%] z-[100] bg-black"
+                    ref={ref2}
                   >
-                    <Footer2 />
-                  </h1>
+                    <div className="text-white relative w-screen ">
+                      <Footer2 />
+                    </div>
+                  </div>
                 </Scroll>
               </ScrollControls>
             </Suspense>
