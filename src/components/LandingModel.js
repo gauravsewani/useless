@@ -145,12 +145,15 @@ function LandingModel() {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      {
-        progress <= 100 && setIsLoading(false);
+    const timer = setTimeout(() => {
+      if (progress >= 100) {
+        setIsLoading(false);
       }
-    }, 2500);
-  }, []);
+    }, 5000);
+
+    // Clear the timeout if the component is unmounted before 5 seconds
+    return () => clearTimeout(timer);
+  }, [progress]); // Depend on the progress value so the effect re-runs when progress changes
 
   const dispatch = useDispatch();
   const { startTime, elapsedTime, percentage, isScrolled } = useSelector(
