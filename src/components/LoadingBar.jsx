@@ -2,7 +2,7 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="h-screen w-screen overflow-hidden relative flex items-center justify-center">
+    <div className="h-screen w-screen overflow-hidden relative flex items-center justify-center bg-black">
       {/* Full Screen Blurred Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover filter blur-lg transform scale-[200]"
