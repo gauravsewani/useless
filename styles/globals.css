@@ -594,7 +594,7 @@ html {
 }
 
 .Hero .header .bionic__bear {
-  font-size: 20px;
+  font-size: 1.7vw;
   cursor: pointer;
 }
 
@@ -1825,3 +1825,8 @@ footer .bottom__footer a {
     opacity: 1;
   }
 }
+
+.header-links h1 {
+  font-size: 1.5vw;
+}
+

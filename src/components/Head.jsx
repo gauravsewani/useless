@@ -6,7 +6,7 @@ import AnimatedTextWord from "./AnimatedTextWord";
 const Head = () => {
   return (
     <div className="Hero pl-5 transition-all duration-150">
-      <div className="flex header text-black items-start w-screen justify-center font-archive ">
+      <div className="flex header text-black items-center w-screen justify-center font-archive ">
         <div className="w-[30vw] max-md:w-[0vw]"></div>
         {/* <button>
           Player one trailer{" "}
@@ -14,21 +14,21 @@ const Head = () => {
             <div className="triangle"></div>
           </span>
         </button> */}
-        <div className="flex gap-16 max-xl:gap-10 max-lg:gap-5 max-sm:hidden text-xl max-md:w-[60vw] w-[50vw] justify-center mx-auto ">
-          <h1 className="text-2xl max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
+        <div className="header-links flex gap-16 max-xl:gap-10 max-lg:gap-5 max-sm:hidden text-xl max-md:w-[60vw] w-[50vw] justify-center mx-auto ">
+          <h1 className="max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
             D.A.O
           </h1>
-          <h1 className="text-2xl max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
+          <h1 className="max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
             Marketplace
           </h1>
-          <h1 className="text-2xl max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
+          <h1 className="max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
             Blog
           </h1>
           <a
             href="/Whitepaper.pdf"
             className="decoration-white text-black no-underline w-fit"
           >
-            <h1 className="text-2xl max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
+            <h1 className="max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
               Whitepaper
             </h1>
           </a>
