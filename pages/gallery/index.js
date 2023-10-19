@@ -1,36 +1,17 @@
 import { useEffect, useState } from "react";
 const NFTGrid = () => {
-  const [images, setImages] = useState([]);
-  const [loaded, setLoaded] = useState(false); // New state to track if images are loaded
+  const [nfts, setNfts] = useState([]); // State to store NFT details
+  const [selectedNft, setSelectedNft] = useState(null); // State to track selected NFT
 
   useEffect(() => {
-    let mounted = true;
-    let i = 2;
-
-    const loadImages = () => {
-      const img = new Image();
-      img.src = `/img/collection/${i}.png`;
-
-      img.onload = () => {
-        if (mounted) {
-          setImages((prevImages) => [...prevImages, img.src]);
-          i += 1;
-          loadImages();
-        }
-      };
-
-      img.onerror = () => {
-        mounted = false;
-      };
-    };
-
-    loadImages();
-
-    return () => {
-      mounted = false;
-      setLoaded(true);
-    };
-  }, [loaded]);
+    // Fetching the NFT details from the JSON file
+    fetch("/static/nft.json") // Update the path to your JSON file
+      .then((response) => response.json())
+      .then((data) => setNfts(data))
+      .catch((error) =>
+        console.error("Error fetching the NFT details:", error)
+      );
+  }, []);
 
   useEffect(() => {
     document.documentElement.style.setProperty("--mc1", "transperent");
@@ -40,8 +21,8 @@ const NFTGrid = () => {
   }, []);
 
   return (
-    <div className="flex w-full h-screen bg-black">
-      <div className="w-[20vw] bg-black flex flex-col items-center justify-evenly my-10">
+    <div className="flex w-full h-screen bg-black overflow-hidden">
+      <div className="hidden md:flex lg:w-[20vw] bg-black flex-col items-center justify-evenly my-10">
         <img src="/img/medori.png" alt="" className="h-32" />
         <div className="grow" />
         <div>
@@ -67,19 +48,78 @@ const NFTGrid = () => {
           />
         </div>
       </div>
-      <div className="w-[80vw] h-screen overflow-y-auto">
-        <div className="flex flex-wrap justify-start items-start">
-          {images.map((src, index) => (
-            <div key={index} className="border p-1 m-2 w-[23%]">
-              <img
-                src={src}
-                alt={`NFT ${index + 1}`}
-                className="w-full h-auto"
-              />
-            </div>
-          ))}
+      <div className="w-full lg:w-[80vw] h-screen overflow-y-auto">
+        <div className="w-full lg:w-[80vw] h-screen overflow-y-auto">
+          <div className="flex flex-wrap">
+            {nfts.map((nft, index) => (
+              <div key={index} className="w-full sm:w-1/2 lg:w-1/4">
+                <img
+                  src={nft.image}
+                  alt={`NFT ${nft.title}`}
+                  className="w-full h-auto cursor-pointer"
+                  onClick={() => setSelectedNft(nft)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      {selectedNft && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center overflow-y-auto"
+          onClick={() => setSelectedNft(null)}
+        >
+          <div
+            className="relative bg-white p-4 rounded-lg flex flex-col md:flex-row items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-0 right-0 m-2 p-[1px] rounded-full text-black-600  font-bold md:hidden"
+              style={{ zIndex: 50 }}
+              onClick={() => setSelectedNft(null)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            <img
+              src={selectedNft.image}
+              alt="Selected NFT"
+              className="w-full md:w-96 h-auto object-cover rounded-lg mb-4 md:mb-0 md:mr-8"
+            />
+            <div className="flex flex-col justify-between">
+              <h2 className="text-2xl font-semibold mb-4">
+                {selectedNft.title}
+              </h2>
+              <p className="text-lg mb-2">
+                <span className="font-semibold">Price:</span>{" "}
+                {selectedNft.price}
+              </p>
+              <p className="text-lg mb-2">
+                <span className="font-semibold">Type:</span> {selectedNft.type}
+              </p>
+              <p className="text-lg mb-2">
+                <span className="font-semibold">Special:</span>{" "}
+                {selectedNft.special}
+              </p>
+              <p className="text-lg mb-2">
+                <span className="font-semibold">Clothing:</span>{" "}
+                {selectedNft.clothing}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

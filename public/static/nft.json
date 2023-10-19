@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "/img/drops/1.jpg",
+    "image": "/img/collection/2.png",
     "title": "Meta Legends #6296",
     "price": "3.37",
     "quantity": 0,
@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "image": "/img/drops/2.jpg",
+    "image": "/img/collection/3.png",
     "title": "Meta Legends #8453",
     "price": "1.46",
     "quantity": 2,
@@ -21,17 +21,17 @@
   },
   {
     "id": 3,
-    "image": "/img/drops/3.jpg",
+    "image": "/img/collection/4.png",
     "title": "Meta Legends #2366",
     "price": "2.04",
     "quantity": 5,
     "type": "fire",
     "special": "fox fire",
-    "clothing": "bule kimono"
+    "clothing": "blue kimono"
   },
   {
     "id": 4,
-    "image": "/img/drops/4.jpg",
+    "image": "/img/collection/5.png",
     "title": "Meta Legends #2926",
     "price": "2.62",
     "quantity": 9,
@@ -41,7 +41,7 @@
   },
   {
     "id": 5,
-    "image": "/img/drops/5.jpg",
+    "image": "/img/collection/6.png",
     "title": "Meta Legends #2240",
     "price": "9.15",
     "quantity": 6,
@@ -51,7 +51,7 @@
   },
   {
     "id": 6,
-    "image": "/img/drops/6.jpg",
+    "image": "/img/collection/7.png",
     "title": "Meta Legends #823",
     "price": "7.18",
     "quantity": 0,
@@ -61,7 +61,7 @@
   },
   {
     "id": 7,
-    "image": "/img/drops/7.jpg",
+    "image": "/img/collection/8.png",
     "title": "Meta Legends #8649",
     "price": "6.39",
     "quantity": 1,
@@ -71,7 +71,7 @@
   },
   {
     "id": 8,
-    "image": "/img/drops/8.jpg",
+    "image": "/img/collection/9.png",
     "title": "Meta Legends #6899",
     "price": "9.89",
     "quantity": 5,
@@ -81,7 +81,7 @@
   },
   {
     "id": 9,
-    "image": "/img/drops/9.jpg",
+    "image": "/img/collection/10.png",
     "title": "Meta Legends #9453",
     "price": "9.79",
     "quantity": 4,
@@ -91,7 +91,7 @@
   },
   {
     "id": 10,
-    "image": "/img/drops/10.jpg",
+    "image": "/img/collection/11.png",
     "title": "Meta Legends #352",
     "price": "7.19",
     "quantity": 4,
@@ -101,17 +101,17 @@
   },
   {
     "id": 11,
-    "image": "/img/drops/11.jpg",
+    "image": "/img/collection/12.png",
     "title": "Meta Legends #7513",
     "price": "6.21",
     "quantity": 6,
     "type": "sand",
     "special": "butterfly",
-    "clothing": "bule kimono"
+    "clothing": "blue kimono"
   },
   {
     "id": 12,
-    "image": "/img/drops/12.jpg",
+    "image": "/img/collection/13.png",
     "title": "Meta Legends #5587",
     "price": "5.94",
     "quantity": 6,
@@ -121,62 +121,12 @@
   },
   {
     "id": 13,
-    "image": "/img/drops/13.jpg",
+    "image": "/img/collection/14.png",
     "title": "Meta Legends #9998",
     "price": "7.89",
     "quantity": 9,
     "type": "human",
     "special": "fox fire",
-    "clothing": "bule kimono"
-  },
-  {
-    "id": 14,
-    "image": "/img/drops/14.jpg",
-    "title": "Meta Legends #3434",
-    "price": "1.40",
-    "quantity": 4,
-    "type": "fire",
-    "special": "butterfly",
-    "clothing": "light kimono"
-  },
-  {
-    "id": 15,
-    "image": "/img/drops/15.jpg",
-    "title": "Meta Legends #7801",
-    "price": "2.35",
-    "quantity": 9,
-    "type": "sand",
-    "special": "butterfly",
-    "clothing": "maroon yukata"
-  },
-  {
-    "id": 16,
-    "image": "/img/drops/16.jpg",
-    "title": "Meta Legends #6936",
-    "price": "0.97",
-    "quantity": 3,
-    "type": "fire",
-    "special": "butterfly",
-    "clothing": "maroon yukata"
-  },
-  {
-    "id": 17,
-    "image": "/img/drops/17.jpg",
-    "title": "Meta Legends #3754",
-    "price": "5.51",
-    "quantity": 0,
-    "type": "fire",
-    "special": "smoke",
-    "clothing": "light kimono"
-  },
-  {
-    "id": 18,
-    "image": "/img/drops/18.jpg",
-    "title": "Meta Legends #7548",
-    "price": "7.35",
-    "quantity": 2,
-    "type": "human",
-    "special": "butterfly",
-    "clothing": "maroon yukata"
+    "clothing": "blue kimono"
   }
 ]
