@@ -2,7 +2,7 @@ import AnimatedTextWord from "../components/AnimatedTextWord";
 
 const Playbox = () => {
   return (
-    <div className="fn_cs_about transition-all duration-150">
+    <div className="fn_cs_about  max-[600px]:text-white max-[600px]:py-10 transition-all duration-150">
       <div className="left_part">
         <div className="img">
           <video
@@ -15,8 +15,9 @@ const Playbox = () => {
           />
         </div>
       </div>
-      <div className="right_part max-sm:p-0 px-20 py-12">
-        <div className="right_in font-montserrat font-semibold">
+      <div className="w-[2vw]"></div>
+      <div className="right_part max-sm:p-0 px-20 font-semibold bg-slate-900 bg-opacity-40  rounded-md text-white py-12">
+        <div className="right_in font-montserrat ">
           <h3 className="fn__maintitle font-archive">
             Medoria Playbox
             <p className="medorii__text">
@@ -57,7 +58,7 @@ const Playbox = () => {
         <a href={"#"} className="self-center">
           <button
             className=" max-md:p-3  max-xl:p-3 xl:p-5
-              max-md:text-xs text-3xl font-archive z-10 xl:w-[20vw] max-md:w-[40vw] md:w-[30vw] test hover:scale-105 ease-in duration-300 text-black"
+              max-md:text-xs text-3xl font-archive z-10 xl:w-[20vw] max-md:w-[40vw] md:w-[30vw] test hover:scale-105 ease-in duration-300 "
           >
             artifact
             <br />

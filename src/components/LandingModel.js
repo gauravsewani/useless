@@ -304,7 +304,7 @@ function LandingModel() {
             position={[0, -5, 0]}
           /> */}
 
-              <ScrollControls pages={5} damping={0.1}>
+              <ScrollControls pages={6} damping={0.1}>
                 {/* <Plane texture={texture} /> */}
 
                 <SpotLight
@@ -353,19 +353,54 @@ function LandingModel() {
                 <ambientLight intensity={1} />
                 <Scroll></Scroll>
                 <Scroll html className="w-screen h-fit">
+                  <div className="flex header text-black items-center w-screen justify-center font-archive ">
+                    <div className="w-[30vw] max-md:w-[0vw]"></div>
+
+                    {/* <button>
+          Player one trailer{" "}
+          <span className="play__button">
+            <div className="triangle"></div>
+          </span>
+        </button> */}
+                    <div className="header-links text-black flex gap-16 max-xl:gap-10 max-lg:gap-5 max-sm:hidden text-xl max-md:w-[60vw] w-[50vw] justify-center mx-auto ">
+                      <h1 className="max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
+                        D.A.O
+                      </h1>
+                      <h1 className="max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
+                        Marketplace
+                      </h1>
+                      <h1 className="max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
+                        Blog
+                      </h1>
+                      <a
+                        href="/Whitepaper.pdf"
+                        className="decoration-white text-black no-underline w-fit"
+                      >
+                        <h1 className="max-md:text-lg max-sm:text-sm max-md:pt-5 font-black cursor-pointer font-archive">
+                          Whitepaper
+                        </h1>
+                      </a>
+                    </div>
+                    <div className="bionic__bear text-black w-[30vw] max-sm:hidden  max-md:pt-5 flex justify-end max-md:pr-5 pr-10">
+                      Bio Organic Bear
+                    </div>
+                  </div>
+                  <div className="h-[50vh] w-screen"></div>
                   <AnimatedDiv variants={fadeFromLeft}>
                     <Head />
                   </AnimatedDiv>
+
                   <AnimatedDiv variants={fadeFromRight}>
                     <div id="second-page">
                       <SecondPage />
                     </div>
                   </AnimatedDiv>
+
                   <AnimatedDiv variants={fadeFromLeft}>
                     <ThirdPage />
                   </AnimatedDiv>
                   <h1
-                    className="text-black absolute lg:top-[280vh] top-[230vh]"
+                    className="text-black absolute lg:top-[350vh] top-[300vh]"
                     style={{
                       width: "inherit",
                       position: "absolute",
@@ -377,7 +412,7 @@ function LandingModel() {
                     </AnimatedDiv>
                   </h1>
                   <h1
-                    className="text-black absolute lg:top-[380vh] top-[350vh]"
+                    className="text-black absolute lg:top-[470vh] top-[410vh]"
                     style={{
                       width: "inherit",
                       position: "absolute",
@@ -391,7 +426,7 @@ function LandingModel() {
                     </AnimatedDiv>
                   </h1>
                   <div
-                    className="absolute -bottom-[67%]  max-sm:-bottom-[110%] z-[100] bg-black"
+                    className="absolute -bottom-[72%]  max-sm:-bottom-[105%] z-[100] bg-black"
                     ref={ref2}
                   >
                     <div className="text-white relative w-screen ">

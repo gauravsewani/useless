@@ -2,7 +2,7 @@ import AnimatedTextWord from "./AnimatedTextWord";
 
 const SecondPage = () => {
   return (
-    <div className="page__two transition-all duration-150">
+    <div className="page__two max-[600px]:bg-slate-900 max-[600px]:bg-opacity-40 max-[600px]:text-white   transition-all duration-150">
       <div className="page__two-main font-montserrat">
         <p className="cryptic">
           <AnimatedTextWord text={"☊⍜⎅⟒⌖ ⚌"} />
@@ -16,7 +16,7 @@ const SecondPage = () => {
         <p>
           <AnimatedTextWord text={"Each bear has a different story"} />
         </p>
-        <p className="artificial">
+        <p className="artificial pt-4">
           <AnimatedTextWord text={"234^783= Artificial Organics"} />
         </p>
       </div>

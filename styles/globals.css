@@ -599,7 +599,7 @@ html {
 }
 
 .Hero .hero__description {
-  color: black;
+  /* color: black; */
   text-transform: uppercase;
   width: 50%;
   align-self: flex-end;
@@ -756,7 +756,7 @@ html {
 }
 
 .page__two .page__two-main {
-  color: black;
+  /* color: black; */
 }
 
 .page__two .page__two-main h2 {
@@ -1829,4 +1829,3 @@ footer .bottom__footer a {
 .header-links h1 {
   font-size: 1.5vw;
 }
-
