@@ -816,7 +816,6 @@ html {
 @media (max-width: 760px) {
   .page__three,
   .page__two,
-  .Hero,
   .Hero .header {
     padding: 20px;
   }

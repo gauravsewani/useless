@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import TextField from "@mui/material/TextField";
 
 const LoginSignup = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -100,59 +101,56 @@ const LoginSignup = () => {
         <form onSubmit={handleSubmit}>
           {!isLogin && (
             <div className="mb-4 ">
-              <label
-                className="block text-black  text-sm font-medium mb-2"
-                htmlFor="name"
-              >
-                Name
-              </label>
-              <input
-                className="border border-gray-300 focus:text-black w-full py-2 px-4 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              <TextField
                 id="name"
-                type="text"
+                label="Name"
+                variant="standard"
+                fullWidth
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onBlur={validateName}
+                error={Boolean(nameError)}
+                helperText={nameError}
+                InputLabelProps={{
+                  style: { fontWeight: "bold" }, // or any desired font weight value
+                }}
               />
-              {nameError && <p className="text-red-500 text-xs">{nameError}</p>}
             </div>
           )}
           <div className="mb-4">
-            <label
-              className="block text-black text-sm font-medium mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className="border border-gray-300 w-full py-2 px-4 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            <TextField
               id="email"
+              label="Email"
+              variant="standard"
+              fullWidth
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onBlur={validateEmail}
+              error={Boolean(emailError)}
+              helperText={emailError}
+              InputLabelProps={{
+                style: { fontWeight: "bold" }, // or any desired font weight value
+              }}
             />
-            {emailError && <p className="text-red-500 text-xs">{emailError}</p>}
           </div>
 
           <div className="mb-4">
-            <label
-              className="block text-black text-sm font-medium mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className="border border-gray-300 w-full py-2 px-4 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            <TextField
               id="password"
+              label="Password"
+              variant="standard"
+              fullWidth
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onBlur={validatePassword}
+              error={Boolean(passwordError)}
+              helperText={passwordError}
+              InputLabelProps={{
+                style: { fontWeight: "bold" }, // or any desired font weight value
+              }}
             />
-            {passwordError && (
-              <p className="text-red-500 text-xs">{passwordError}</p>
-            )}
           </div>
 
           {!isLogin && (
