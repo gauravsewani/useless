@@ -12,12 +12,14 @@ import Youtube from "../../public/assets/youtube.svg";
 const Footer2 = () => {
   return (
     <footer>
-      <div className="flex gap-10 items-center min-h-[100px] justify-evenly max-sm:gap-2 max-[600px]:pb-0 px-10 ">
-        <div className=" max-h-20  text-center  max-[600px]:hidden">
+      <div className="flex gap-10 items-center min-h-[100px] justify-evenly max-sm:gap-2 max-[600px]:pb-0 px-10 max-[600px]:grid max-[600px]:text-xs">
+        <div className=" max-h-20  text-center grow my-5">
           <h2 className=" text-sm text-yellow-300 ">MEDORII.IO</h2>
-          <h1 className=""> PLAY, OWN TRADE. JOIN US IN OUR METAVERSE</h1>
+          <h1 className=""> PLAY, </h1>
+          <h1 className=""> OWN TRADE. </h1>
+          <h1 className=""> OWN TRADE. JOIN US IN OUR METAVERSE </h1>
         </div>
-        <div className="socials_div max-[600px]:hidden flex gap-5 text-lg font-razed">
+        <div className="socials_div grow max-[600px]:hidden flex gap-5 text-lg font-razed">
           <a
             href="https://discord.gg/4wKmVpjfMM"
             className="text-white no-underline"
@@ -65,7 +67,7 @@ const Footer2 = () => {
           </a>
         </div>
       </div>
-      <div className=" max-[600px]:flex hidden gap-5 items-center px-10 py-5">
+      <div className=" max-[600px]:flex hidden gap-5 items-center mx-auto mt-4">
         <div className="socials_div max-[600px]:flex hidden mx-auto gap-5 text-lg font-razed">
           <a
             href="https://discord.gg/4wKmVpjfMM"

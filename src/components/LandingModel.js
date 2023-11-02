@@ -85,6 +85,7 @@ function LandingModel() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [audio, setAudio] = useState(null);
+  const [navOpen, setNavOpen] = useState(false);
 
   // space bar thing
 
@@ -231,58 +232,66 @@ function LandingModel() {
           {!isInView1 && !inView2 && (
             <div className="bg-transparent text-3xl text-yellow-400 text-center font-black absolute w-screen h-screen overflow-hidden z-50 flex items-center pointer-events-none ">
               {isScrolled == false && (
-                <div className="max-[600px]:hidden  flex w-[80vw] h-[98vh] items-end justify-center  mx-auto">
-                  <div className="flex gap-3  items-center justify-center relative">
-                    <p className="mt-1 text-white drop-shadow-yellow">press</p>
-                    <p className="absolute right-0 left-0 top-0 bottom-0  mt-2.5 mr-7 text-black text-xl">
-                      spacebar
-                    </p>
-                    <div className="w-40 h-10 overflow-hidden rounded-full bg-white outline-4 outline outline-black">
+                <div className="max-[600px]:hidden flex w-[90vw] h-[98vh] items-end justify-between mx-auto">
+                  <div className="flex items-center">
+                    <button
+                      onClick={toggleSound}
+                      className="pointer-events-auto ml-10 outline-none focus:outline-none"
+                    >
+                      {isPlaying ? (
+                        <div className="mt-4">
+                          <div className="loader w-40 h-16 bg-transparent">
+                            <span className="stroke"></span>
+                            <span className="stroke"></span>
+                            <span className="stroke"></span>
+                            <span className="stroke"></span>
+                            <span className="stroke"></span>
+                            <span className="stroke"></span>
+                            <span className="stroke"></span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="mt-4">
+                          <div className="max-[500px]:hidden block text-black ">
+                            <FaVolumeMute size={60} />
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  </div>
+
+                  <div className="flex gap-3 items-center justify-center relative">
+                    <p className="text-white drop-shadow-yellow">press</p>
+
+                    <div className="relative w-40 h-10 overflow-hidden rounded-full bg-white outline-4 outline outline-black">
+                      <p className="absolute inset-0 flex items-center justify-center text-black text-xl">
+                        spacebar
+                      </p>
                       <div
-                        className={`h-full w-full transition-all duration-75 rounded-full bg-yellow-300 ${
+                        className={`h-full transition-all duration-75 rounded-full bg-yellow-300 ${
                           percentage == 0
                             ? "outline-none"
                             : "outline-2 outline outline-black"
-                        }  `}
+                        }`}
                         style={{ width: `calc(${percentage} * 1%)` }}
                       ></div>
                     </div>
-                    <p className="mt-1 text-white drop-shadow-yellow">
-                      to warp
-                    </p>
+
+                    <p className="text-white drop-shadow-yellow">to warp</p>
+                  </div>
+
+                  <div className="flex justify-end">
+                    <span>
+                      <a href="/gallery" className="text-black font-archive">
+                        codex design
+                      </a>
+                    </span>
                   </div>
                 </div>
               )}
             </div>
           )}
-          <div className="absolute pointer-events-none z-20 w-screen h-screen top-0 bottom-0 left-0  ">
-            <div className="relative max-md:hidden">
-              <button
-                onClick={toggleSound}
-                className="absolute pointer-events-auto flex ml-10 outline-none focus:outline-none left-0 w-56 "
-              >
-                {isPlaying ? (
-                  <div className="mt-4">
-                    <div className="loader w-40 h-16 bg-transparent">
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                      <span className="stroke"></span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="mt-4">
-                    <div className=" max-[500px]:hidden block text-black ">
-                      <FaVolumeMute size={60} />
-                    </div>
-                  </div>
-                )}
-              </button>
-            </div>
-          </div>
+
           <Canvas>
             <Suspense>
               {/* <color attach="backgrou nd" args={["#333333"]} /> */}
@@ -353,6 +362,72 @@ function LandingModel() {
                 <ambientLight intensity={1} />
                 <Scroll></Scroll>
                 <Scroll html className="w-screen h-fit">
+                  <div>
+                    <div className="absolute top-0 left-0 right-0 w-screen h-20  min-[600px]:hidden flex items-center justify-end p-4 z-30">
+                      <button
+                        className="text-black pr-5"
+                        onClick={() => setNavOpen(!navOpen)}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {navOpen && (
+                      <div className="absolute top-0 left-0 w-screen h-screen bg-black text-white z-50">
+                        <div className="flex justify-end p-4 ">
+                          <button
+                            className="text-red-500 text-4xl pr-5"
+                            onClick={() => setNavOpen(false)}
+                          >
+                            ×
+                          </button>
+                        </div>
+                        <nav className="flex flex-col items-center text-center font-archive font-bold justify-start m-20 h-screen">
+                          <ul className="">
+                            <li className="mb-4">
+                              <a href="#" className="text-2xl">
+                                D.A.O
+                              </a>
+                            </li>
+                            <li className="mb-4">
+                              <a href="#" className="text-2xl">
+                                MARKETPLACE
+                              </a>
+                            </li>
+                            <li className="mb-4">
+                              <a href="#" className="text-2xl">
+                                BLOG
+                              </a>
+                            </li>
+                            <li className="mb-4">
+                              <a href="/Whitepaper.pdf" className="text-2xl">
+                                WHITEPAPER
+                              </a>
+                            </li>
+                            <li className="mb-4">
+                              <a href="/gallery" className="text-2xl">
+                                Codex Design
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                    )}
+                  </div>
+
                   <div className="flex header text-black items-center w-screen justify-center font-archive ">
                     <div className="w-[30vw] max-md:w-[0vw]"></div>
 
@@ -426,7 +501,7 @@ function LandingModel() {
                     </AnimatedDiv>
                   </h1>
                   <div
-                    className="absolute -bottom-[72%]  max-sm:-bottom-[105%] z-[100] bg-black"
+                    className="absolute lg:-bottom-[70%] md:-bottom-[90%]  max-[600px]:-bottom-[105%] max-[320px]:-bottom-[95%] max-[290px]:-bottom-[120%]  z-[100] bg-black"
                     ref={ref2}
                   >
                     <div className="text-white relative w-screen ">

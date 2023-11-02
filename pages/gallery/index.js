@@ -22,15 +22,55 @@ const NFTGrid = () => {
 
   return (
     <div className="flex w-full h-screen bg-black overflow-hidden">
+      <div className="md:hidden absolute   m-2 p-2 z-50">
+        <a href="/" className="text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+            />
+          </svg>
+        </a>
+      </div>
+
       <div className="hidden md:flex lg:w-[20vw] bg-black flex-col items-center justify-evenly my-10">
+        <a href="/" className="text-white self-start ml-8 ">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+            />
+          </svg>
+        </a>
+
         <img src="/img/medori.png" alt="" className="h-32" />
         <div className="grow" />
         <div>
-          <h1 className="text-3xl font-archive text-white">Codex Designs</h1>
-          <h1 className="text-3xl font-archive text-white">Weapons</h1>
+          <h1 className="text-3xl font-archive text-center mb-4 text-white">
+            Codex Designs
+          </h1>
+          <h1 className="text-xl text-center font-archive text-white">
+            {"}Comming Soon{"}
+          </h1>
         </div>
         <div className="grow" />
-        <div className="flex flex-col gap-8 grow justify-end mb-10">
+        {/* <div className="flex flex-col gap-8 grow justify-end mb-10">
           <img
             src={"svg/opensea.svg"}
             alt=""
@@ -46,7 +86,7 @@ const NFTGrid = () => {
             alt=""
             className="h-10 w-full bg-white rounded-full p-1"
           />
-        </div>
+        </div> */}
       </div>
       <div className="w-full lg:w-[80vw] h-screen overflow-y-auto">
         <div className="w-full lg:w-[80vw] h-screen overflow-y-auto">

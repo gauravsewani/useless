@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import SwiperCore from "swiper/core";
 import "swiper/swiper.min.css";
+import "swiper/swiper-bundle.min.css";
 import Card from "./Card";
+
+SwiperCore.use([Navigation]);
 
 const Teams = () => {
   return (
@@ -9,6 +14,7 @@ const Teams = () => {
       <h1 className="mt-8 text-center text-4xl font-bold">Core Teams</h1>
 
       <Swiper
+        navigation
         breakpoints={{
           // when window width is >= 640px
           640: {
