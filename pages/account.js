@@ -148,7 +148,7 @@ export default function Account() {
   }
 
   return (
-    <div className="bg-purple-100">
+    <div className="bg-blue-100">
       <Container style={containerStyle}>
         <IconButton
           color="primary"

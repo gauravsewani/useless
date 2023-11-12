@@ -67,7 +67,7 @@ const Footer2 = () => {
           </a>
         </div>
       </div>
-      <div className=" max-[600px]:flex hidden gap-5 items-center mx-auto mt-4">
+      <div className=" max-[600px]:flex hidden gap-5 items-center mx-auto mt-4 pb-10">
         <div className="socials_div max-[600px]:flex hidden mx-auto gap-5 text-lg font-razed">
           <a
             href="https://discord.gg/4wKmVpjfMM"
@@ -107,9 +107,6 @@ const Footer2 = () => {
             </div>
           </a>
         </div>
-      </div>
-      <div className="relative">
-        <div className="bg-black absolute  left-0 right-0 top-0  min-h-screen"></div>
       </div>
     </footer>
   );
