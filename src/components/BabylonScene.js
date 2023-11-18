@@ -20,6 +20,8 @@ import Head from "./Head";
 import Playbox from "../layout/Playbox";
 import SecondPage from "./SecondPage";
 import ThirdPage from "./ThirdPage";
+import { useInView } from "react-intersection-observer";
+import { FaVolumeMute } from "react-icons/fa";
 
 const modelDirectories = [
   "/models/bear2/",
@@ -34,48 +36,82 @@ const BabylonScene = () => {
   const [percentage, setPercentage] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
   const [shouldRenderModel, setShouldRenderModel] = useState(false);
+  const [isZeroDivInView, setIsZeroDivInView] = useState(false);
+  const [isFirstDivInView, setIsFirstDivInView] = useState(false);
+  const [isSecondDivInView, setIsSecondDivInView] = useState(false);
+  const [isThirdDivInView, setIsThirdDivInView] = useState(false);
+  const [isFourthDivInView, setIsFourthDivInView] = useState(false);
+  const [isFifthDivInView, setIsFifthDivInView] = useState(false);
+  const [isSixthDivInView, setIsSixthDivInView] = useState(false);
+  const [isSpacebarVisible, setIsSpacebarVisible] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audio, setAudio] = useState(null);
+
+  const [refZeroDiv, inViewZeroDiv] = useInView({});
+  const [refFirstDiv, inViewFirstDiv] = useInView({});
+  const [refSecondDiv, inViewSecondDiv] = useInView({});
+  const [refThirdDiv, inViewThirdDiv] = useInView({});
+  const [refFourthDiv, inViewFourthDiv] = useInView({});
+  const [refFifthDiv, inViewFifthDiv] = useInView({});
+  const [refSixthDiv, inViewSixthDiv] = useInView({});
+  const [controls, setControls] = useState({
+    posX: 0,
+    posY: -1.0467,
+    posZ: 5.6332,
+    rotX: 0,
+    rotY: 3.141592653589793,
+    rotZ: 0,
+    uniformScale: 1,
+  });
 
   const key = `model-${modelIndex}`;
-  const { posX, posY, posZ, rotX, rotY, rotZ, uniformScale } = useControls({
-    posX: { label: "Position X", value: 0, min: -10, max: 10, step: 0.0001 },
+
+  useControls({
+    posX: {
+      label: "Position X",
+      value: controls.posX,
+      min: -10,
+      max: 10,
+      step: 0.0001,
+    },
     posY: {
       label: "Position Y",
-      value: -1.0467,
+      value: controls.posY,
       min: -10,
       max: 10,
       step: 0.0001,
     },
     posZ: {
       label: "Position Z",
-      value: 5.6332,
+      value: controls.posZ,
       min: -10,
       max: 10,
       step: 0.0001,
     },
     rotX: {
       label: "Rotation X",
-      value: 0,
+      value: controls.rotX,
       min: -Math.PI,
       max: Math.PI,
       step: 0.0001,
     },
     rotY: {
       label: "Rotation Y",
-      value: 3.141592653589793,
+      value: controls.rotY,
       min: -Math.PI,
       max: Math.PI,
       step: 0.0001,
     },
     rotZ: {
       label: "Rotation Z",
-      value: 0,
+      value: controls.rotZ,
       min: -Math.PI,
       max: Math.PI,
       step: 0.0001,
     },
     uniformScale: {
       label: "Uniform Scale",
-      value: 1,
+      value: controls.uniformScale,
       min: 0.0001,
       max: 10,
       step: 0.0001,
@@ -86,11 +122,37 @@ const BabylonScene = () => {
   const scene = useScene();
 
   useEffect(() => {
+    // Create the Audio instance once when the component mounts
+    setAudio(new Audio("sound.mp3"));
+
+    // Clean up the Audio instance when the component unmounts
+    return () => {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+        setAudio(null);
+      }
+    };
+  }, []);
+
+  const toggleSound = () => {
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play();
+      setIsPlaying(true);
+    }
+  };
+
+  useEffect(() => {
     let startTime = null;
     let animationFrameId = null;
 
     const handleKeyDown = (event) => {
       if (event.key === " ") {
+        event.preventDefault(); // Prevent default spacebar behavior (e.g., scrolling)
+
         if (startTime === null) {
           startTime = performance.now();
           setPercentage(0);
@@ -179,10 +241,10 @@ const BabylonScene = () => {
   useEffect(() => {
     // Check window size only on the client side
     if (typeof window !== "undefined") {
-      setShouldRenderModel(window.innerWidth >= 600);
+      setShouldRenderModel(window.innerWidth >= 100);
 
       const handleResize = () => {
-        setShouldRenderModel(window.innerWidth >= 600);
+        setShouldRenderModel(window.innerWidth >= 100);
       };
 
       window.addEventListener("resize", handleResize);
@@ -192,6 +254,132 @@ const BabylonScene = () => {
       };
     }
   }, []);
+
+  useEffect(() => {
+    if (inViewZeroDiv && !isZeroDivInView) {
+      setIsZeroDivInView(true);
+      setControls({
+        posX: 0,
+        posY: -3.5,
+        posZ: 5.6332,
+        rotX: 0,
+        rotY: 3.141592653589793,
+        rotZ: 0,
+        uniformScale: 1.2,
+      });
+    } else if (!inViewZeroDiv && isZeroDivInView) {
+      setIsZeroDivInView(false);
+    }
+  }, [inViewZeroDiv, isZeroDivInView]);
+
+  //first div animations
+  useEffect(() => {
+    if (inViewFirstDiv && !isFirstDivInView) {
+      setIsFirstDivInView(true);
+      setControls({
+        posX: 0,
+        posY: -3.5,
+        posZ: 5.6332,
+        rotX: 0,
+        rotY: 3.141592653589793,
+        rotZ: 0,
+        uniformScale: 1.2,
+      });
+    } else if (!inViewFirstDiv && isFirstDivInView) {
+      setIsFirstDivInView(false);
+    }
+  }, [inViewFirstDiv, isFirstDivInView]);
+  //second div animations
+  useEffect(() => {
+    if (inViewSecondDiv && !isSecondDivInView) {
+      setIsSecondDivInView(true);
+      setControls({
+        posX: 3,
+        posY: -1.0467,
+        posZ: 5.6332,
+        rotX: 0,
+        rotY: 3.141592653589793,
+        rotZ: 0,
+        uniformScale: 1,
+      });
+    } else if (!inViewSecondDiv && isSecondDivInView) {
+      setIsSecondDivInView(false);
+    }
+  }, [inViewSecondDiv, isSecondDivInView]);
+  //third div animations
+  useEffect(() => {
+    if (inViewThirdDiv && !isThirdDivInView) {
+      setIsThirdDivInView(true);
+      setControls({
+        posX: -3,
+        posY: -1.0467,
+        posZ: 5.6332,
+        rotX: 0,
+        rotY: 3.141592653589793,
+        rotZ: 0,
+        uniformScale: 1,
+      });
+      setIsSpacebarVisible(true);
+    } else if (!inViewThirdDiv && isThirdDivInView) {
+      setIsThirdDivInView(false);
+    }
+  }, [inViewThirdDiv, isThirdDivInView]);
+
+  //Fourth div animations
+  useEffect(() => {
+    if (inViewFourthDiv && !isFourthDivInView) {
+      setIsFourthDivInView(true);
+      setControls({
+        posX: 2,
+        posY: -3.0467,
+        posZ: 5.6332,
+        rotX: 0,
+        rotY: 3.141592653589793,
+        rotZ: 0,
+        uniformScale: 1.3,
+      });
+      setIsSpacebarVisible(false);
+    } else if (!inViewFourthDiv && isFourthDivInView) {
+      setIsFourthDivInView(false);
+    }
+  }, [inViewFourthDiv, isFourthDivInView]);
+  //Fifth div animations
+  useEffect(() => {
+    if (inViewFifthDiv && !isFifthDivInView) {
+      setIsFifthDivInView(true);
+      setControls({
+        posX: 2,
+        posY: -1.0467,
+        posZ: 5.6332,
+        rotX: 0,
+        rotY: 3.141592653589793,
+        rotZ: 0,
+        uniformScale: 1,
+      });
+      setIsSpacebarVisible(false);
+    } else if (!inViewFifthDiv && isFifthDivInView) {
+      setIsFifthDivInView(false);
+    }
+  }, [inViewFifthDiv, isFifthDivInView]);
+
+  //Sixth div animations
+  useEffect(() => {
+    if (inViewSixthDiv && !isSixthDivInView) {
+      setIsSixthDivInView(true);
+      setControls({
+        posX: 0,
+        posY: -1.0467,
+        posZ: 5.6332,
+        rotX: 0,
+        rotY: 3.141592653589793,
+        rotZ: 0,
+        uniformScale: 1,
+      });
+      setIsSpacebarVisible(false);
+    } else if (!inViewSixthDiv && isSixthDivInView) {
+      setIsSixthDivInView(false);
+    }
+  }, [inViewSixthDiv, isSixthDivInView]);
 
   if (!isMounted) {
     return null;
@@ -228,9 +416,19 @@ const BabylonScene = () => {
                     ? "bear.glb"
                     : "bear-transformed.glb"
                 }
-                position={new Vector3(posX, posY, posZ)}
-                rotation={new Vector3(rotX, rotY, rotZ)}
-                scaling={new Vector3(uniformScale, uniformScale, uniformScale)}
+                position={
+                  new Vector3(controls.posX, controls.posY, controls.posZ)
+                }
+                rotation={
+                  new Vector3(controls.rotX, controls.rotY, controls.rotZ)
+                }
+                scaling={
+                  new Vector3(
+                    controls.uniformScale,
+                    controls.uniformScale,
+                    controls.uniformScale
+                  )
+                }
                 onModelLoaded={() => {
                   console.log("Model Loaded");
                 }}
@@ -252,25 +450,65 @@ const BabylonScene = () => {
           </Suspense>
         </Scene>
       </Engine>
-      <div className="absolute top-0 bottom-0 left-0 right-0 flex items-end justify-center max-[600px]:hidden">
-        <div className="flex gap-3 items-center justify-center relative px-8 py-4 text-3xl font-archive">
-          <p className="text-white drop-shadow-yellow">press</p>
-          <div className="relative w-40 h-10 overflow-hidden rounded-full bg-white outline-4 outline outline-black">
-            <p className="absolute inset-0 flex items-center justify-center text-black text-xl">
-              spacebar
-            </p>
-            <div
-              className={`h-full transition-all duration-75 rounded-full bg-yellow-300 ${
-                percentage === 0
-                  ? "outline-none"
-                  : "outline-2 outline outline-black"
-              }`}
-              style={{ width: `calc(${percentage} * 1%)` }}
-            ></div>
+      {isSpacebarVisible && (
+        <div className="absolute top-0 bottom-0 left-0 right-0 flex items-end justify-center max-[600px]:hidden ">
+          <div className="flex h-[8vh] w-[90vw] mb-2 items-center z-[60]">
+            <div className="flex items-center z-[80]">
+              <button
+                onClick={toggleSound}
+                className="pointer-events-auto ml-10 outline-none focus:outline-none"
+              >
+                {isPlaying ? (
+                  <div className="p-2">
+                    <div className="loader w-40 h-12 bg-transparent">
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                      <span className="stroke"></span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="">
+                    <div className="max-[500px]:hidden block text-black ">
+                      <FaVolumeMute size={60} />
+                    </div>
+                  </div>
+                )}
+              </button>
+            </div>
+            <div className="grow"></div>
+            <div className="flex gap-3 items-center justify-center  px-8 py-4 text-3xl font-archive self-center absolute left-0 right-0 mx-auto">
+              <p className="text-white drop-shadow-yellow">press</p>
+              <div className="relative w-40 h-10 overflow-hidden rounded-full bg-white outline-4 outline outline-black">
+                <p className="absolute inset-0 flex items-center justify-center text-black text-xl">
+                  spacebar
+                </p>
+                <div
+                  className={`h-full transition-all duration-75 rounded-full bg-yellow-300 ${
+                    percentage === 0
+                      ? "outline-none"
+                      : "outline-2 outline outline-black"
+                  }`}
+                  style={{ width: `calc(${percentage} * 1%)` }}
+                ></div>
+              </div>
+              <p className="text-white drop-shadow-yellow">to warp</p>
+            </div>
+            <div className="grow"></div>
+
+            <div className="flex justify-end z-[80]">
+              <span>
+                <a href="/gallery" className="text-black font-archive">
+                  codex design
+                </a>
+              </span>
+            </div>
           </div>
-          <p className="text-white drop-shadow-yellow">to warp</p>
         </div>
-      </div>
+      )}
       <div
         id="scroll-viewer-id"
         style={{
@@ -285,7 +523,7 @@ const BabylonScene = () => {
       >
         {/* Your HTML content inside a div */}
         <ScrollViewer>
-          <div className="flex flex-col minh-[400vh] w-full">
+          <div className="flex flex-col min-h-[400vh] w-full">
             <div>
               <div className="absolute top-0 left-0 right-0 w-screen h-20  min-[600px]:hidden flex items-center justify-end p-4 z-30">
                 <button
@@ -385,22 +623,26 @@ const BabylonScene = () => {
               </div>
             </div>
             <div className="h-[50vh] w-screen max-[600px]:hidden"></div>
-
+            <div className="h-0 w-screen" ref={refZeroDiv}></div>
             {/* AnimatedDiv for the first page */}
             <AnimatedDiv variants={fadeFromLeft}>
-              <Head />
+              <div ref={refFirstDiv}>
+                <Head />
+              </div>
             </AnimatedDiv>
 
             {/* AnimatedDiv for the second page */}
             <AnimatedDiv variants={fadeFromRight}>
-              <div id="second-page">
+              <div id="second-page" ref={refSecondDiv}>
                 <SecondPage />
               </div>
             </AnimatedDiv>
 
             {/* AnimatedDiv for the third page */}
             <AnimatedDiv variants={fadeFromLeft}>
-              <ThirdPage />
+              <div ref={refThirdDiv}>
+                <ThirdPage />
+              </div>
             </AnimatedDiv>
 
             {/* AnimatedDiv for the Teams component */}
@@ -413,7 +655,9 @@ const BabylonScene = () => {
               }}
             >
               <AnimatedDiv variants={fadeFromTop}>
-                <Teams />
+                <div ref={refFourthDiv}>
+                  <Teams />
+                </div>
               </AnimatedDiv>
             </h1>
 
@@ -427,12 +671,14 @@ const BabylonScene = () => {
               }}
             >
               <AnimatedDiv variants={fadeNormal}>
-                <Playbox />
+                <div ref={refFifthDiv}>
+                  <Playbox />
+                </div>
               </AnimatedDiv>
             </h1>
 
             {/* Footer */}
-            <div className="text-white  w-screen relative">
+            <div className="text-white  w-screen relative" ref={refSixthDiv}>
               <Footer2 />
             </div>
           </div>

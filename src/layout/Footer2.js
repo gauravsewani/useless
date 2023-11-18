@@ -17,7 +17,7 @@ const Footer2 = () => {
           <h2 className=" text-sm text-yellow-300 ">MEDORII.IO</h2>
           <h1 className=""> PLAY, </h1>
           <h1 className=""> OWN TRADE. </h1>
-          <h1 className=""> OWN TRADE. JOIN US IN OUR METAVERSE </h1>
+          <h1 className=""> JOIN US IN OUR METAVERSE </h1>
         </div>
         <div className="socials_div grow max-[600px]:hidden flex gap-5 text-lg font-razed">
           <a

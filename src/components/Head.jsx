@@ -5,8 +5,8 @@ import AnimatedTextWord from "./AnimatedTextWord";
 
 const Head = () => {
   return (
-    <div className="Hero min-[600px]:pl-5 min-[600px]:p-5 transition-all duration-150">
-      <div className="hero__description max-[600px]:bg-slate-900 max-[600px]:bg-opacity-40 max-[600px]:p-5 font-montserrat max-[600px]:text-white font-semibold ">
+    <div className="Hero min-[600px]:pl-5 my-5 min-[600px]:p-5 transition-all duration-150">
+      <div className="hero__description mt-10 max-[600px]:bg-slate-900 max-[600px]:bg-opacity-40 max-[600px]:p-5 font-montserrat max-[600px]:text-white font-semibold ">
         <p className="season">
           <AnimatedTextWord text={"new bears every season"} />
         </p>
