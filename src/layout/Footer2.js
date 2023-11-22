@@ -57,7 +57,7 @@ const Footer2 = () => {
               <Image src={Youtube} width={35} height={35} alt="Youtube" />
             </div>
           </a>
-        </div>{" "}
+        </div>
         <div className=" max-[600px]:gap-5 flex w-fit gap-5 justify-between  ">
           <a href="" className="text-white visited:text-white">
             Terms And Conditions

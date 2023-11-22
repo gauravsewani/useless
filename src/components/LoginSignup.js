@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
+import Script from "next/script";
 
 const LoginSignup = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -93,148 +94,165 @@ const LoginSignup = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-amber-50">
-      <div className="bg-white p-8 sm:rounded-2xl max-sm:h-screen outline outline-2 shadow-lg text-black w-full sm:max-w-md">
-        <div className="w-36 h-36 rounded-full bg-slate-300 mx-auto ">
-          <img src="/img/logo4.png" alt="" className="p-2" />
-        </div>
-        <form onSubmit={handleSubmit}>
-          {!isLogin && (
-            <div className="mb-4 ">
+    <>
+      <Script
+        src="/grained.js"
+        onLoad={() => {
+          var options = {
+            animate: true,
+            patternWidth: 1000,
+            patternHeight: 1000,
+            grainOpacity: 0.2,
+            grainDensity: 1,
+            grainWidth: 1,
+            grainHeight: 1,
+          };
+
+          grained("#container", options);
+        }}
+      />
+      <div
+        className="flex flex-col items-center justify-center min-h-screen bg-slate-100"
+        id="container"
+      >
+        <div className="bg-white p-8 sm:rounded-2xl max-sm:h-screen outline outline-2 shadow-lg text-black w-full sm:max-w-md z-10">
+          <div className="w-36 h-36 rounded-full bg-slate-300 mx-auto ">
+            <img src="/img/logo4.png" alt="" className="p-2" />
+          </div>
+          <form onSubmit={handleSubmit}>
+            {!isLogin && (
+              <div className="mb-4 ">
+                <TextField
+                  id="name"
+                  label="Name"
+                  variant="standard"
+                  fullWidth
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  onBlur={validateName}
+                  error={Boolean(nameError)}
+                  helperText={nameError}
+                  InputLabelProps={{
+                    style: { fontWeight: "bold" }, // or any desired font weight value
+                  }}
+                />
+              </div>
+            )}
+            <div className="mb-4">
               <TextField
-                id="name"
-                label="Name"
+                id="email"
+                label="Email"
                 variant="standard"
                 fullWidth
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                onBlur={validateName}
-                error={Boolean(nameError)}
-                helperText={nameError}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onBlur={validateEmail}
+                error={Boolean(emailError)}
+                helperText={emailError}
                 InputLabelProps={{
                   style: { fontWeight: "bold" }, // or any desired font weight value
                 }}
               />
             </div>
-          )}
-          <div className="mb-4">
-            <TextField
-              id="email"
-              label="Email"
-              variant="standard"
-              fullWidth
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onBlur={validateEmail}
-              error={Boolean(emailError)}
-              helperText={emailError}
-              InputLabelProps={{
-                style: { fontWeight: "bold" }, // or any desired font weight value
-              }}
-            />
-          </div>
-
-          <div className="mb-4">
-            <TextField
-              id="password"
-              label="Password"
-              variant="standard"
-              fullWidth
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onBlur={validatePassword}
-              error={Boolean(passwordError)}
-              helperText={passwordError}
-              InputLabelProps={{
-                style: { fontWeight: "bold" }, // or any desired font weight value
-              }}
-            />
-          </div>
-
-          {!isLogin && (
-            <div className="mb-4 flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                id="agreed"
-                className="rounded border-gray-300 text-blue-500 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 mr-2"
-                checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
+            <div className="mb-4">
+              <TextField
+                id="password"
+                label="Password"
+                variant="standard"
+                fullWidth
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onBlur={validatePassword}
+                error={Boolean(passwordError)}
+                helperText={passwordError}
+                InputLabelProps={{
+                  style: { fontWeight: "bold" }, // or any desired font weight value
+                }}
               />
-              <label
-                className="text-gray-700 text-xs cursor-pointer select-none"
-                htmlFor="agreed"
-              >
-                You agree with the{" "}
-                <a
-                  target="_blank"
-                  className="text-purple-700 uppercase font-bold"
-                  href="https://drive.google.com/file/d/11np-DIVHXGytyiTrPHDS5I5jWcd14ulo/view"
-                >
-                  terms & conditions
-                </a>
-              </label>
             </div>
-          )}
-
-          <div className="flex items-center justify-between">
+            {!isLogin && (
+              <div className="mb-4 flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="agreed"
+                  className="rounded border-gray-300 text-blue-500 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 mr-2"
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
+                />
+                <label
+                  className="text-gray-700 text-xs cursor-pointer select-none"
+                  htmlFor="agreed"
+                >
+                  You agree with the{" "}
+                  <a
+                    target="_blank"
+                    className="text-purple-700 uppercase font-bold"
+                    href="https://drive.google.com/file/d/11np-DIVHXGytyiTrPHDS5I5jWcd14ulo/view"
+                  >
+                    terms & conditions
+                  </a>
+                </label>
+              </div>
+            )}
+            <div className="flex items-center justify-between">
+              <button
+                className={`bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200 mx-auto ${
+                  !isLogin &&
+                  (!agreed || nameError || emailError || passwordError)
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
+                type="submit"
+                disabled={
+                  !isLogin &&
+                  (!agreed || nameError || emailError || passwordError)
+                }
+              >
+                {isLogin ? "Sign In" : "Sign Up"}
+              </button>
+            </div>
+          </form>
+          <div class="border-t-2 border-solid mx-12 my-5 border-gray-500"></div>
+          <div className="flex items-center justify-center mt-4">
             <button
-              className={`bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200 mx-auto ${
-                !isLogin &&
-                (!agreed || nameError || emailError || passwordError)
-                  ? "opacity-50 cursor-not-allowed"
-                  : ""
-              }`}
-              type="submit"
-              disabled={
-                !isLogin &&
-                (!agreed || nameError || emailError || passwordError)
-              }
+              className=" bg-gray-100 outline text-black font-bold py-2 px-12 rounded-md transition duration-200 flex items-center gap-4"
+              onClick={handleGoogleLogin}
             >
-              {isLogin ? "Sign In" : "Sign Up"}
+              <img src="/img/google.png" alt="" className="h-6" />
+              <span className="max-sm:hidden">Sign In with Google</span>
             </button>
           </div>
-        </form>
-        <div class="border-t-2 border-solid mx-12 my-5 border-gray-500"></div>
-
-        <div className="flex items-center justify-center mt-4">
-          <button
-            className=" bg-gray-100 outline text-black font-bold py-2 px-12 rounded-md transition duration-200 flex items-center gap-4"
-            onClick={handleGoogleLogin}
-          >
-            <img src="/img/google.png" alt="" className="h-6" />
-            <span className="max-sm:hidden">Sign In with Google</span>
-          </button>
-        </div>
-        <div className="flex items-center justify-center mt-4">
-          {isLogin ? (
-            <p className="text-black text-sm pointer-events-none">
-              Don't have an account?
-            </p>
-          ) : (
-            <p className="text-black text-sm pointer-events-none">
-              Already have an account?
-            </p>
-          )}
-          <button
-            type="button"
-            className="text-blue-500 hover:text-blue-600 font-medium text-sm max-sm:text-xs"
-            onClick={() => setIsLogin(!isLogin)}
-          >
+          <div className="flex items-center justify-center mt-4">
             {isLogin ? (
-              <span className="pointer-events-auto text-purple-400 ml-1 font-bold">
-                Sign Up Here
-              </span>
+              <p className="text-black text-sm pointer-events-none">
+                Don't have an account?
+              </p>
             ) : (
-              <span className="pointer-events-auto text-purple-400 ml-1 font-bold">
-                Login Here
-              </span>
+              <p className="text-black text-sm pointer-events-none">
+                Already have an account?
+              </p>
             )}
-          </button>
+            <button
+              type="button"
+              className="text-blue-500 hover:text-blue-600 font-medium text-sm max-sm:text-xs"
+              onClick={() => setIsLogin(!isLogin)}
+            >
+              {isLogin ? (
+                <span className="pointer-events-auto text-purple-400 ml-1 font-bold">
+                  Sign Up Here
+                </span>
+              ) : (
+                <span className="pointer-events-auto text-purple-400 ml-1 font-bold">
+                  Login Here
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

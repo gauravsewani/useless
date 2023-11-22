@@ -2,6 +2,7 @@
 import React from "react";
 import BabylonScene from "../../src/components/BabylonScene";
 import { useEffect } from "react";
+import Script from "next/script";
 
 const Home = () => {
   useEffect(() => {
@@ -12,11 +13,29 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <div className="w-screen max-h-screen overflow-hidden">
-        <BabylonScene />
+    <>
+      <Script
+        src="/grained.js"
+        onLoad={() => {
+          var options = {
+            animate: true,
+            patternWidth: 1000,
+            patternHeight: 1000,
+            grainOpacity: 0.1,
+            grainDensity: 1,
+            grainWidth: 1,
+            grainHeight: 1,
+          };
+
+          grained("#container", options);
+        }}
+      />
+      <div>
+        <div className="w-screen max-h-screen overflow-hidden" id="container">
+          <BabylonScene />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
