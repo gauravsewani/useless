@@ -45,6 +45,8 @@ const BabylonScene = () => {
   const [isSixthDivInView, setIsSixthDivInView] = useState(false);
   const [isSpacebarVisible, setIsSpacebarVisible] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [scalingFactor, setScalingFactor] = useState(1);
+
   const [audio, setAudio] = useState(null);
 
   const [refZeroDiv, inViewZeroDiv] = useInView({});
@@ -78,57 +80,57 @@ const BabylonScene = () => {
 
   const key = `model-${modelIndex}`;
 
-  useControls({
-    posX: {
-      label: "Position X",
-      value: controls.posX,
-      min: -10,
-      max: 10,
-      step: 0.0001,
-    },
-    posY: {
-      label: "Position Y",
-      value: controls.posY,
-      min: -10,
-      max: 10,
-      step: 0.0001,
-    },
-    posZ: {
-      label: "Position Z",
-      value: controls.posZ,
-      min: -10,
-      max: 10,
-      step: 0.0001,
-    },
-    rotX: {
-      label: "Rotation X",
-      value: controls.rotX,
-      min: -Math.PI,
-      max: Math.PI,
-      step: 0.0001,
-    },
-    rotY: {
-      label: "Rotation Y",
-      value: controls.rotY,
-      min: -Math.PI,
-      max: Math.PI,
-      step: 0.0001,
-    },
-    rotZ: {
-      label: "Rotation Z",
-      value: controls.rotZ,
-      min: -Math.PI,
-      max: Math.PI,
-      step: 0.0001,
-    },
-    uniformScale: {
-      label: "Uniform Scale",
-      value: controls.uniformScale,
-      min: 0.0001,
-      max: 10,
-      step: 0.0001,
-    },
-  });
+  // useControls({
+  //   posX: {
+  //     label: "Position X",
+  //     value: controls.posX,
+  //     min: -10,
+  //     max: 10,
+  //     step: 0.0001,
+  //   },
+  //   posY: {
+  //     label: "Position Y",
+  //     value: controls.posY,
+  //     min: -10,
+  //     max: 10,
+  //     step: 0.0001,
+  //   },
+  //   posZ: {
+  //     label: "Position Z",
+  //     value: controls.posZ,
+  //     min: -10,
+  //     max: 10,
+  //     step: 0.0001,
+  //   },
+  //   rotX: {
+  //     label: "Rotation X",
+  //     value: controls.rotX,
+  //     min: -Math.PI,
+  //     max: Math.PI,
+  //     step: 0.0001,
+  //   },
+  //   rotY: {
+  //     label: "Rotation Y",
+  //     value: controls.rotY,
+  //     min: -Math.PI,
+  //     max: Math.PI,
+  //     step: 0.0001,
+  //   },
+  //   rotZ: {
+  //     label: "Rotation Z",
+  //     value: controls.rotZ,
+  //     min: -Math.PI,
+  //     max: Math.PI,
+  //     step: 0.0001,
+  //   },
+  //   uniformScale: {
+  //     label: "Uniform Scale",
+  //     value: controls.uniformScale,
+  //     min: 0.0001,
+  //     max: 10,
+  //     step: 0.0001,
+  //   },
+  // });
 
   const engineRef = useRef(null);
   const scene = useScene();
@@ -254,10 +256,19 @@ const BabylonScene = () => {
 
   useEffect(() => {
     const handleResize = () => {
+      if (typeof window !== "undefined") {
+        const initialWindowSize = 100; // Replace with your initial window size
+        const currentWindowSize = Math.max(
+          window.innerWidth,
+          initialWindowSize
+        );
+        return currentWindowSize / initialWindowSize / 15;
+      }
       const engine = engineRef.current;
       if (engine) {
         engine.setHardwareScalingLevel(1 / window.devicePixelRatio);
       }
+      return 1; // Default scaling factor if window object is not available
     };
 
     handleResize(); // Set initial scaling
@@ -293,151 +304,144 @@ const BabylonScene = () => {
     }
   }, []);
 
+  // Zero Div
   useEffect(() => {
+    const animationValues = {
+      posX: 0,
+      posY: -3.5,
+      posZ: 5.6332,
+      rotX: 0,
+      rotY: 3.141592653589793,
+      rotZ: 0,
+      uniformScale: 1.2,
+    };
+
     if (inViewZeroDiv && !isZeroDivInView) {
       setIsZeroDivInView(true);
-      updateControlsGradually(
-        {
-          posX: 0,
-          posY: -3.5,
-          posZ: 5.6332,
-          rotX: 0,
-          rotY: 3.141592653589793,
-          rotZ: 0,
-          uniformScale: 1.2,
-        },
-        1000,
-        10
-      );
+      updateControlsGradually(animationValues, 1000, 10);
     } else if (!inViewZeroDiv && isZeroDivInView) {
       setIsZeroDivInView(false);
     }
-  }, [inViewZeroDiv, isZeroDivInView]);
+  }, [inViewZeroDiv, isZeroDivInView, scalingFactor]);
 
+  // First Div
   useEffect(() => {
+    const animationValues = {
+      posX: 0,
+      posY: -3.5,
+      posZ: 5.6332,
+      rotX: 0,
+      rotY: 3.141592653589793,
+      rotZ: 0,
+      uniformScale: 1.2,
+    };
+
     if (inViewFirstDiv && !isFirstDivInView) {
       setIsFirstDivInView(true);
-      updateControlsGradually(
-        {
-          posX: 0,
-          posY: -3.5,
-          posZ: 5.6332,
-          rotX: 0,
-          rotY: 3.141592653589793,
-          rotZ: 0,
-          uniformScale: 1.2,
-        },
-        1000,
-        10
-      );
+      updateControlsGradually(animationValues, 1000, 10);
     } else if (!inViewFirstDiv && isFirstDivInView) {
       setIsFirstDivInView(false);
     }
   }, [inViewFirstDiv, isFirstDivInView]);
 
+  // Second Div
   useEffect(() => {
+    const animationValues = {
+      posX: 3,
+      posY: -1.0467,
+      posZ: 5.6332,
+      rotX: 0,
+      rotY: 3.141592653589793,
+      rotZ: 0,
+      uniformScale: 1,
+    };
+
     if (inViewSecondDiv && !isSecondDivInView) {
       setIsSecondDivInView(true);
-      updateControlsGradually(
-        {
-          posX: 3,
-          posY: -1.0467,
-          posZ: 5.6332,
-          rotX: 0,
-          rotY: 3.141592653589793,
-          rotZ: 0,
-          uniformScale: 1,
-        },
-        1000,
-        10
-      );
+      updateControlsGradually(animationValues, 1000, 10);
     } else if (!inViewSecondDiv && isSecondDivInView) {
       setIsSecondDivInView(false);
     }
   }, [inViewSecondDiv, isSecondDivInView]);
 
+  // Third Div
   useEffect(() => {
+    const animationValues = {
+      posX: -3,
+      posY: -1.0467,
+      posZ: 5.6332,
+      rotX: 0,
+      rotY: 3.141592653589793,
+      rotZ: 0,
+      uniformScale: 1,
+    };
+
     if (inViewThirdDiv && !isThirdDivInView) {
       setIsThirdDivInView(true);
-      updateControlsGradually(
-        {
-          posX: -3,
-          posY: -1.0467,
-          posZ: 5.6332,
-          rotX: 0,
-          rotY: 3.141592653589793,
-          rotZ: 0,
-          uniformScale: 1,
-        },
-        1000,
-        10
-      );
+      updateControlsGradually(animationValues, 1000, 10);
       setIsSpacebarVisible(true);
     } else if (!inViewThirdDiv && isThirdDivInView) {
       setIsThirdDivInView(false);
     }
   }, [inViewThirdDiv, isThirdDivInView]);
 
+  // Fourth Div
   useEffect(() => {
+    const animationValues = {
+      posX: 2,
+      posY: -3.0467,
+      posZ: 5.6332,
+      rotX: 0,
+      rotY: 3.141592653589793,
+      rotZ: 0,
+      uniformScale: 1.3,
+    };
+
     if (inViewFourthDiv && !isFourthDivInView) {
       setIsFourthDivInView(true);
-      updateControlsGradually(
-        {
-          posX: 2,
-          posY: -3.0467,
-          posZ: 5.6332,
-          rotX: 0,
-          rotY: 3.141592653589793,
-          rotZ: 0,
-          uniformScale: 1.3,
-        },
-        1000,
-        10
-      );
+      updateControlsGradually(animationValues, 1000, 10);
       setIsSpacebarVisible(false);
     } else if (!inViewFourthDiv && isFourthDivInView) {
       setIsFourthDivInView(false);
     }
   }, [inViewFourthDiv, isFourthDivInView]);
 
+  // Fifth Div
   useEffect(() => {
+    const animationValues = {
+      posX: 2,
+      posY: -1.0467,
+      posZ: 5.6332,
+      rotX: 0,
+      rotY: 3.141592653589793,
+      rotZ: 0,
+      uniformScale: 1,
+    };
+
     if (inViewFifthDiv && !isFifthDivInView) {
       setIsFifthDivInView(true);
-      updateControlsGradually(
-        {
-          posX: 2,
-          posY: -1.0467,
-          posZ: 5.6332,
-          rotX: 0,
-          rotY: 3.141592653589793,
-          rotZ: 0,
-          uniformScale: 1,
-        },
-        1000,
-        10
-      );
+      updateControlsGradually(animationValues, 1000, 10);
       setIsSpacebarVisible(false);
     } else if (!inViewFifthDiv && isFifthDivInView) {
       setIsFifthDivInView(false);
     }
   }, [inViewFifthDiv, isFifthDivInView]);
 
+  // Sixth Div
   useEffect(() => {
+    const animationValues = {
+      posX: 0,
+      posY: -1.0467,
+      posZ: 5.6332,
+      rotX: 0,
+      rotY: 3.141592653589793,
+      rotZ: 0,
+      uniformScale: 1,
+    };
+
     if (inViewSixthDiv && !isSixthDivInView) {
       setIsSixthDivInView(true);
-      updateControlsGradually(
-        {
-          posX: 0,
-          posY: -1.0467,
-          posZ: 5.6332,
-          rotX: 0,
-          rotY: 3.141592653589793,
-          rotZ: 0,
-          uniformScale: 1,
-        },
-        1000,
-        10
-      );
+      updateControlsGradually(animationValues, 1000, 10);
       setIsSpacebarVisible(false);
     } else if (!inViewSixthDiv && isSixthDivInView) {
       setIsSixthDivInView(false);
@@ -451,6 +455,7 @@ const BabylonScene = () => {
   return (
     <div className="h-screen w-screen bg-white">
       <Leva hidden />
+
       <Engine
         antialias
         adaptToDeviceRatio={false}
