@@ -5,13 +5,13 @@ import AnimatedTextWord from "./AnimatedTextWord";
 
 const Head = () => {
   return (
-    <div className="Hero min-[600px]:pl-5 my-5 min-[600px]:p-5 transition-all duration-150">
-      <div className="hero__description mt-10 max-[600px]:bg-slate-900 max-[600px]:bg-opacity-40 max-[600px]:p-5 font-montserrat max-[600px]:text-white font-semibold ">
-        <p className="season">
+    <div className="Hero min-[600px]:pl-5 my-5 min-[600px]:p-5 transition-all duration-150 max-[600px]:p-5">
+      <div className="hero__description mt-10 max-[600px]:bg-slate-900 max-[600px]:bg-opacity-40 max-[600px]:p-5 font-montserrat max-[600px]:text-white font-semibold max-[600px]:rounded-3xl text-2xl">
+        <p className="season text-xl max-[600px]:text-sm max-[600px]:text-center">
           <AnimatedTextWord text={"new bears every season"} />
         </p>
-        <h1 className="font-archive">bio-organic medorii bears</h1>
-        <p className="style">
+        <h1 className="font-archive ">bio-organic medorii bears</h1>
+        <p className="style text-2xl max-[600px]:text-xl">
           <AnimatedTextWord text={"your style. in game. in the metaverse"} />
         </p>
         <p className="skins">

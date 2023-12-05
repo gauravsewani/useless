@@ -635,20 +635,20 @@ html {
 }
 
 .Hero .hero__description .season {
-  font-size: 20px;
+  /* font-size: 20px; */
 
   margin: 10px 0;
 }
 
 .Hero .hero__description .style {
-  font-size: 25px;
-  margin-bottom: 30px;
+  /* font-size: 25px; */
+  /* margin-bottom: 30px; */
 }
 
 .Hero .hero__description .skins,
 .Hero .hero__description .opensea,
 .Hero .hero__description .playbox {
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 
 @media (max-width: 1000px) {

@@ -2,7 +2,7 @@ import AnimatedTextWord from "../components/AnimatedTextWord";
 
 const Playbox = () => {
   return (
-    <div className="fn_cs_about   max-[600px]:py-10 transition-all duration-150">
+    <div className="fn_cs_about max-[600px]:flex-col  max-[600px]:py-10 transition-all duration-150 max-[600px]:p-5">
       <div className="left_part ">
         <div className="img">
           <video
@@ -16,7 +16,7 @@ const Playbox = () => {
         </div>
       </div>
       <div className="w-[2vw]"></div>
-      <div className="right_part max-sm:p-0 px-20 font-semibold max-[600px]:text-white max-[600px]:bg-slate-900 max-[600px]:bg-opacity-40  py-12">
+      <div className="right_part max-sm:p-0 px-20 font-semibold max-[600px]:text-white max-[600px]:bg-slate-900 max-[600px]:bg-opacity-40  py-12 max-[600px]:p-5 max-[600px]:rounded-3xl">
         <div className="right_in font-montserrat max-[600px]:pt-10">
           <h3 className="fn__maintitle font-archive text-center">
             Medoria Playbox

@@ -5526,11 +5526,11 @@ a.medorii_fn_videobutton:hover .fn__svg,
     display: none;
   }
   .fn_cs_about {
-    -webkit-flex-direction: column-reverse;
+    /* -webkit-flex-direction: column-reverse;
     -moz-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     -o-flex-direction: column-reverse;
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; */
   }
   .fn_cs_about .left_part {
     width: 100%;
@@ -5541,9 +5541,9 @@ a.medorii_fn_videobutton:hover .fn__svg,
   }
   .fn_cs_about .right_part {
     width: 100%;
-    padding-left: 20px;
+    /* padding-left: 20px;
     padding-right: 20px;
-    padding-top: 0;
+    padding-top: 0; */
   }
   .fn_cs_about .right_in {
     max-width: 100%;
