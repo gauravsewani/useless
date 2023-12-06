@@ -501,7 +501,9 @@ function LandingModel() {
                     </AnimatedDiv>
                   </h1>
                   <div
-                    className="absolute lg:-bottom-[70%] md:-bottom-[90%]  max-[600px]:-bottom-[105%] max-[320px]:-bottom-[95%] max-[290px]:-bottom-[120%]  z-[100] bg-black"
+                    className="absolute lg:-bottom-[70%] md:-bottom-[90%]  max-[600px]:-bottom-[105%] 
+                    max-[450px]:-bottom-[101%]
+                    max-[355px]:-bottom-[95%] max-[290px]:-bottom-[120%]  z-[100] bg-black"
                     ref={ref2}
                   >
                     <div className="text-white relative w-screen ">
