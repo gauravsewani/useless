@@ -36,6 +36,7 @@
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
     "ethers": "^5.7.2",
+    "firebase": "^10.7.1",
     "formik": "^2.2.9",
     "framer-motion": "^10.11.2",
     "gsap": "^3.11.5",
@@ -80,6 +81,7 @@
     "three": "^0.152.2",
     "tsparticles": "^2.9.3",
     "util": "^0.12.5",
+    "uuid": "^9.0.1",
     "wagmi": "^0.11.7",
     "yup": "^1.0.2",
     "zustand": "^4.3.8"
