@@ -1,12 +1,4 @@
-import Head from "next/head";
-import { Provider } from "react-redux";
-import store from "../src/redux/store";
-import "react-toastify/dist/ReactToastify.css";
-import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
-import Cart from "../src/components/Cart";
-import { ToastContainer } from "react-toastify";
-
 // import "@rainbow-me/rainbowkit/styles.css";
 // import {
 //   getDefaultWallets,
@@ -76,69 +68,8 @@ import { ToastContainer } from "react-toastify";
 //   },
 // };
 
-const demoAppInfo = {
-  appName: "Medorii",
-};
-// const { chains, provider } = configureChains(
-//   [mainnet, polygon, optimism, arbitrum],
-//   [publicProvider()]
-// );
-
-// const { connectors } = getDefaultWallets({
-//   appName: "My RainbowKit App",
-//   chains,
-// });
-
-// const wagmiClient = createClient({
-//   autoConnect: true,
-//   connectors,
-//   provider,
-// });
-
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-  return (
-    <SessionProvider session={session}>
-      <Provider store={store}>
-        <Head>
-          <link rel="icon" type="image/x-icon" href="/img/logo4.png" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin=""
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet"
-          />
-          {/* !Google Fonts */}
-          {/* Styles */}
-          <link
-            type="text/css"
-            rel="stylesheet"
-            href="/css/plugins.css?ver=4.1"
-          />
-          <link
-            type="text/css"
-            rel="stylesheet"
-            href="/css/style.css?ver=4.1"
-          />
-        </Head>
-        {/* <WagmiConfig client={wagmiClient}>
-        <RainbowKitProvider
-          // theme={myCustomTheme}
-          appInfo={demoAppInfo}
-        chains={chains} 
-        >*/}
-        <Cart />
-        <Component {...pageProps} />
-        <ToastContainer style={{ zIndex: 50 }} />
-
-        {/* </RainbowKitProvider>
-      </WagmiConfig> */}
-      </Provider>
-    </SessionProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
