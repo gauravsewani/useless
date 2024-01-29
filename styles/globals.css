@@ -8,6 +8,10 @@
     src: url(../Archive.otf);
   }
   @font-face {
+    font-family: "BD";
+    src: url(../BD-Nippori.otf);
+  }
+  @font-face {
     font-family: "Razed";
     src: url(../Razed_bold.ttf);
   }

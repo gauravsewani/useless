@@ -63,6 +63,7 @@ module.exports = {
         archive: "Archive",
         open: "Open Sans",
         razed: "Razed",
+        BD: "BD",
         montserrat: "montserrat",
       },
     },

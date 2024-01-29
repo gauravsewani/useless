@@ -116,9 +116,11 @@ function index() {
             className="mx-auto w-[400px] h-[500px] object-cover"
           />
         </div>
-        <div className="w-52 flex flex-col gap-5">
-          <h1 className="text-5xl font-bold font-archive mb-4">Medorii</h1>
-          <p className="text-gray-500 font-bold text-lg mb-4">
+        <div className="w-72  flex flex-col gap-5">
+          <h1 className="text-5xl font-bold font-BD mb-4 tracking-widest">
+            Medorii
+          </h1>
+          <p className="text-gray-500 font-bold text-center text-lg mb-4">
             Upgrading in progress
           </p>
           <div>
@@ -126,19 +128,19 @@ function index() {
               catch us at
             </p>
             <div className="flex justify-center mt-4">
-              <a href="https://instagram.com" className="mx-2">
+              <a href="https://www.instagram.com/medorii.io/" className="mx-2">
                 <img
                   src="/img/market/instagram.svg"
                   className="h-10 w-10 fill-current text-gray-700 bg-black rounded-full p-1"
                 />
               </a>
-              <a href="https://github.com" className="mx-2">
+              <a href="https://discord.gg/4wKmVpjfMM" className="mx-2">
                 <img
                   src="/img/market/discord.svg"
                   className="h-10 w-10 fill-current text-gray-700 bg-black rounded-full p-1"
                 />
               </a>
-              <a href="https://linkedin.com" className="mx-2">
+              <a href="https://twitter.com/Medorii_io" className="mx-2">
                 <img
                   src="/img/market/twitter.svg"
                   className="h-10 w-10 fill-current text-gray-700 bg-black rounded-full p-1"
@@ -156,7 +158,7 @@ function index() {
 "
       >
         <div className="w-screen flex flex-col justify-center items-center gap-5 bg-black/50">
-          <h1 className="text-5xl font-bold font-archive mb-4 text-white">
+          <h1 className="text-5xl font-bold font-BD mb-4 text-white tracking-widest">
             Medorii
           </h1>
           <p className="text-white font-bold text-lg mb-4">
