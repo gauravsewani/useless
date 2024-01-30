@@ -106,7 +106,7 @@ function index() {
   // }
 
   return (
-    <div className="bg-gray-100 h-screen flex flex-col items-center justify-center">
+    <div className="bg-gradient-radial from-slate-100 via-slate-200 to-gray-400 h-screen flex flex-col items-center justify-center">
       <div className="max-md:hidden flex w-screen gap-10 h-screen items-center justify-center">
         <div className="grow "></div>
         <div className="w-[40vw]">
