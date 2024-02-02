@@ -116,10 +116,12 @@ function index() {
             className="mx-auto w-[400px] h-[500px] object-cover"
           />
         </div>
-        <div className="w-72  flex flex-col gap-5">
-          <h1 className="text-5xl font-bold font-BD mb-4 tracking-widest">
-            Medorii
+        <div className="w-fit  flex flex-col gap-5">
+          <h1 class="text-5xl font-bold font-BD mb-4 tracking-widest text-center relative">
+            Medori
+            <span class="inline-block relative mr-[-0.8rem]">i</span>
           </h1>
+
           <p className="text-gray-500 font-bold text-center text-lg mb-4">
             Upgrading in progress
           </p>
